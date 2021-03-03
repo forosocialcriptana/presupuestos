@@ -1,0 +1,982 @@
+---
+title: "Presupuestos municipales de Campo de Criptana"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: cosmo
+    orientation: rows
+    horizontal_layout: fill
+    logo: img/logo.png
+    favicon: img/favicon.ico
+    css: custom.css
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(tidylog, warn.conflicts = FALSE)
+library(plotly)
+library(sunburstR)
+library(xlsx)
+```
+
+```{r cache=T}
+# PREPROCESAMIENTO DE DATOS
+# Carga clasificación gastos
+programas <- read.xlsx("Gastos.xlsx", sheetName = "Programas")
+programas$Código <- as.factor(programas$Código)
+capitulos <- read.xlsx("Gastos.xlsx", sheetName = "Capítulos")
+capitulos$Código <- as.factor(capitulos$Código)
+articulos <- read.xlsx("Gastos.xlsx", sheetName = "Artículos")
+articulos$Código <- as.factor(articulos$Código)
+censo <- read.xlsx("Gastos.xlsx", sheetName = "Censo")
+censo <- censo %>% mutate(Año = as.factor(Año))
+
+# Carga de gastos formato Emiliano
+# Limpieza previa:
+# - Fundir programa 16101 con 16100 Abastecimiento agua
+# - Fundir programa 16200 con 16210 Recogida de residuos (consermancha)
+# - Fundir programa 17100 con 17000 Medio ambiente
+gastos <- read_csv("gastos.csv") %>%
+  mutate(
+    Economica = as.character(Economica), 
+    Programa = as.factor(Programa),
+    cod.capitulo = as.factor(substr(Economica, 1, 1)),
+    cod.articulo = as.factor(substr(Economica, 1, 2)),
+    cod.concepto = as.factor(substr(Economica, 1, 3)),
+    cod.subconcepto = as.factor(substr(Economica, 1, 5))) %>%
+# Convertir columnas de años en filas
+  pivot_longer(
+    cols = starts_with('2'), 
+    names_to = "Año", 
+    names_ptypes = list(
+      Año = factor(
+      levels = c("2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"), 
+      #ordered = TRUE
+    )),
+    values_to = "Cantidad") %>%
+  # Eliminar los totales por capítulos
+  filter(!is.na(Programa)) %>%
+  # Reemplazar NAs por ceros
+  replace_na(list(Cantidad=0))
+
+# Filtrar totales por programas y renombrar variables
+gastos.programas <- gastos %>% 
+  filter(is.na(Economica)) %>%
+  rename(cod.programa = Programa, Programa = Descripcion)
+
+# Eliminar totales por programas
+gastos <- gastos %>% filter(!is.na(Economica)) %>%
+  # Fusionar tabla de gastos con tabla de capítulos y artículos
+  left_join(capitulos, by=c("cod.capitulo"="Código")) %>%
+  left_join(articulos, by=c("cod.articulo"="Código"))
+
+# Carga clasificación ingresos
+capitulos <- read.xlsx("Ingresos.xlsx", sheetName = "Capítulos", colClasses=rep("character",2))
+articulos <- read.xlsx("Ingresos.xlsx", sheetName = "Artículos", colClasses=rep("character",2))
+conceptos <- read.xlsx("Ingresos.xlsx", sheetName = "Conceptos", colClasses=rep("character",2))
+
+# Carga de ingresos formato Emiliano
+ingresos <- read_csv("ingresos.csv") %>%
+  mutate(Economica = as.character(Economica),
+         cod.capitulo = as.factor(substr(Economica, 1, 1)),
+         cod.articulo = as.factor(substr(Economica, 1, 2)),
+         cod.concepto = as.factor(substr(Economica, 1, 3)),
+         cod.subconcepto = as.factor(substr(Economica, 1, 5))) %>%
+  # Convertir columnas de años en filas
+  pivot_longer(
+    cols = starts_with('2'),
+    names_to = "Año",
+    names_ptypes = list(
+      Año = factor(
+        levels = c("2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"),
+        #ordered = TRUE
+        )),
+    values_to = "Cantidad") %>%
+  # Eliminar totales por capítulo
+  filter(!is.na(Economica)) %>%
+  # Reemplazar NAs por ceros
+  replace_na(list(Cantidad=0)) %>%
+  # Fusionar tabla de gastos con tabla de programas
+  left_join(capitulos, by=c("cod.capitulo"="Código")) %>%
+  left_join(articulos, by=c("cod.articulo"="Código")) %>%
+  left_join(conceptos, by=c("cod.concepto"="Código"))
+
+# Carga de cargos desde Excel 
+cargos <- read.xlsx("2017/gastos-2017.xlsx", sheetName = "Cargos")
+```
+
+```{r funciones}
+gasto.total <- function(gastos, año){
+  total <- gastos %>% filter(Año==año) %>% summarise(Total = sum(Cantidad))
+  return(paste(format(total$Total, big.mark="."), '€'))
+}
+
+gasto.habitante <- function(censo, gastos, año){
+  total <- gastos %>% filter(Año==año) %>% summarise(Total = sum(Cantidad))
+  poblacion <- censo %>% filter(Año==año)
+  return(paste(format(round(total$Total / poblacion$Población, 2), decimal.mark = ","),  '€'))
+}
+
+plot.gastos.programas <- function(gastos, año){
+  gastos.programas <- gastos %>% filter(Año==año) %>% group_by(Programa) %>% summarise(Cantidad=sum(Cantidad))
+  xaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  yaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  p <- plot_ly(gastos.programas, labels = ~Programa, values = ~Cantidad, type = 'pie', textposition = 'none', hoverinfo="text+percent", 
+               text = ~paste(Programa, '</br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€"), sort=T, direction="clockwise") %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+  return(p)
+}
+
+plot.gastos.capitulos <- function(gastos, año){
+  gastos.capitulos <- gastos %>% filter(Año==año) %>% group_by(Capítulo) %>% summarise(Cantidad=sum(Cantidad))
+  xaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  yaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  p <- plot_ly(gastos.capitulos, labels = ~Capítulo, values = ~Cantidad, type = 'pie', textposition = 'none', hoverinfo="text+percent", 
+               text = ~paste(Capítulo, '</br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€"), sort=T, direction="clockwise") %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+  return(p)
+}
+
+plot.ingresos.capitulos <- function(ingresos, año){
+  ingresos.capitulos <- ingresos %>% filter(Año==año) %>% group_by(Capítulo) %>% summarise(Cantidad=sum(Cantidad))
+  xaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  yaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  p <- plot_ly(ingresos.capitulos, labels = ~Capítulo, values = ~Cantidad, type = 'pie', textposition = 'none', hoverinfo="text+percent", 
+               text = ~paste(Capítulo, '</br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€"), sort=T, direction="clockwise") %>%
+    layout(xaxis=xaxis, yaxis=yaxis)
+  return(p)
+}
+
+plot.ingresos.articulos <- function(ingresos, año){
+  ingresos.articulos <- ingresos %>% filter(Año==año) %>% group_by(Artículo) %>% summarise(Cantidad=sum(Cantidad))
+  xaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  yaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  p <- plot_ly(ingresos.articulos, labels = ~Artículo, values = ~Cantidad, type = 'pie', textposition = 'none', hoverinfo="text+percent", 
+               text = ~paste(Artículo, '</br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€"), sort=T, direction="clockwise") %>%
+    layout(xaxis=xaxis, yaxis=yaxis)
+  return(p)
+}
+
+plot.ingresos.conceptos <- function(ingresos, año){
+  ingresos.conceptos <- ingresos %>% filter(Año==año) %>% group_by(Concepto) %>% summarise(Cantidad=sum(Cantidad))
+  xaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  yaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
+  p <- plot_ly(ingresos.conceptos, labels = ~Concepto, values = ~Cantidad, type = 'pie', textposition = 'none', hoverinfo="text+percent", 
+               text = ~paste(Concepto, '</br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€"), sort=T, direction="clockwise") %>%
+    layout(xaxis=xaxis, yaxis=yaxis)
+  return(p)
+}
+```
+
+
+# Sidebar {.sidebar data-width=200}
+
+## Evolución
+
+- [Gastos](#evolucion-gastos)
+- [Ingresos](#evolucion-ingresos)
+
+## Años
+
+-  [2021](#presupuesto-2021)
+-  [2020](#presupuesto-2020)
+-  [2019](#presupuesto-2019)
+-  [2018](#presupuesto-2018)
+-  [2017](#presupuesto-2017)
+-  [2016](#presupuesto-2016)
+-  [2015](#presupuesto-2015)
+-  [2014](#presupuesto-2014)
+-  [2013](#presupuesto-2013)
+-  [2012](#presupuesto-2012)
+-  [2011](#presupuesto-2011)
+-  [2010](#presupuesto-2010)
+
+# Evolucion gastos {.hidden}
+
+## Column {.tabset}
+
+### Gastos
+
+```{r evolucion-gastos}
+gastos.años <- gastos %>% group_by(Año) %>% summarise(Cantidad=sum(Cantidad))
+gastos.años <- left_join(gastos.años, censo, by=c("Año"="Año"))
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- plot_ly(gastos.años, x = ~Año, y=~Cantidad, type = "bar", hoverinfo = 'text', 
+             text = ~paste('Año: ', Año, '<br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€<br>Coste por persona: ", 
+                           format(Cantidad/Población, decimal.mark=",", big.mark="."), "€")) %>% 
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+### Evolución de los Gastos de los 10 mayores programas
+
+```{r}
+# 10 mayores partidas
+gastos.programas.mayores <- gastos.programas %>% group_by(Programa) %>% summarize(Cantidad=sum(Cantidad)) %>% top_n(15) %>% arrange(desc(Cantidad))
+programas.mayores <- unique(gastos.programas.mayores$Programa)
+```
+
+```{r evolucion-gastos-programas}
+gastos.años.programas <- gastos.programas %>% group_by(Año, Programa) %>% summarise(Cantidad=sum(Cantidad))
+xaxis <- list(showgrid=F, zeroline=T, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- gastos.programas %>% 
+  filter(Programa %in% programas.mayores) %>%
+  group_by(Programa, Año) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  # group_by(Programa) %>%
+  plot_ly(x=~Año, y=~Cantidad, color=~Programa) %>% 
+  add_lines(hoverinfo = 'text', text = ~paste('Programa: ', Programa, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) %>% 
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+### Evolución de los Gastos por capítulos
+
+```{r evolucion-gastos-capitulos}
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- gastos %>% 
+  group_by(Capítulo, Año) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  plot_ly(x=~Año, y=~Cantidad, color=~Capítulo) %>%
+  add_lines(hoverinfo = 'text', text = ~paste('Capítulo: ', Capítulo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+### Evolución de los Gastos por artículos
+
+```{r evolucion-gastos-articulos}
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- gastos %>% 
+  group_by(Artículo, Año) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  plot_ly(x=~Año, y=~Cantidad, color=~Artículo) %>%
+  add_lines(hoverinfo = 'text', text = ~paste('Artículo: ', Artículo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+# Evolucion ingresos {.hidden}
+
+## Column {.tabset}
+
+### Evolución de los Ingresos
+
+```{r evolucion-ingresos}
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos %>% 
+  group_by(Año) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>% 
+  plot_ly(x = ~Año, y=~Cantidad, type = "bar", hoverinfo = 'text', text = ~paste('Año:', Año, '<br>Cantidad:', format(Cantidad, decimal.mark=",", big.mark="."), "€")) %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+### Evolución de los Ingresos por capítulos
+
+```{r evolucion-ingresos-capitulos}
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos %>% 
+  group_by(Capítulo, Año) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  plot_ly(x=~Año, y=~Cantidad, color=~Capítulo) %>%
+  add_lines(hoverinfo = 'text', text = ~paste('Capítulo: ', Capítulo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+### Evolución de los Ingresos por Artículos
+
+```{r evolucion-ingresos-articulos}
+ingresos.años.articulos <- ingresos %>% group_by(Año, Artículo) %>% summarise(Cantidad=sum(Cantidad))
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos %>% 
+  group_by(Artículo, Año) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  plot_ly(x=~Año, y=~Cantidad, color=~Artículo) %>%
+  add_lines(hoverinfo = 'text', text = ~paste('Artículo: ', Artículo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+### Evolución de los Ingresos por Concepto
+
+```{r evolucion-ingresos-conceptos}
+ingresos.años.concepto <- ingresos %>% group_by(Año, Concepto) %>% summarise(Cantidad=sum(Cantidad))
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos %>% 
+  group_by(Concepto, Año) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  plot_ly(x=~Año, y=~Cantidad, color=~Concepto) %>%
+  add_lines(hoverinfo = 'text', text = ~paste('Concepto: ', Concepto, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) %>%
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+
+# Presupuesto 2021 {.hidden}
+
+```{r 2021}
+año <- 2021
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2021}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2021}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2021}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2021}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2021}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2020 {.hidden}
+
+```{r 2020}
+año <- 2020
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2020}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2020}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2020}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2020}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2020}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2019 {.hidden}
+
+```{r 2019}
+año <- 2019
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2019}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2019}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2019}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2019}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2019}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2018 {.hidden}
+
+```{r 2018}
+año <- 2018
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2018}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2018}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2018}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2018}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2018}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2017 {.hidden}
+
+```{r 2017}
+año <- 2017
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2017}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2017}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2017}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2017}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2017}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2016 {.hidden}
+
+```{r 2016}
+año <- 2016
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2016}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2016}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2016}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2016}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2016}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2015 {.hidden}
+
+```{r 2015}
+año <- 2015
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2015}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2015}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2015}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2015}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2015}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2014 {.hidden}
+
+```{r 2014}
+año <- 2014
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2014}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2014}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2014}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2014}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2014}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2013 {.hidden}
+
+```{r 2013}
+año <- 2013
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2013}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2013}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2013}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2013}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2013}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2012 {.hidden}
+
+```{r 2012}
+año <- 2012
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2012}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2012}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2012}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2012}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2012}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2011 {.hidden}
+
+```{r 2011}
+año <- 2011
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2011}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2011}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2011}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2011}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2011}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+
+# Presupuesto 2010 {.hidden}
+
+```{r 2010}
+año <- 2010
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+## Column {.tabset}
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2010}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2010}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2010}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2010}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2010}
+plot.ingresos.conceptos(ingresos, año)
+```
