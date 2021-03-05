@@ -353,9 +353,32 @@ Desplazar la leyenda para ver el resto de programas.
 plot.gastos.programas(gastos.programas, año)
 ```
 
+### Gastos
+
+```{r gastos-económica-2021}
+gastos %>%
+  filter(Año==año) %>% 
+  group_by(Capítulo, Artículo) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  unite(Categoría, Capítulo, Artículo, sep='-') %>%
+  select(Categoría, Cantidad) %>%
+  sunburst(count = T, legend=F, explanation = "function(d){return d.value.toLocaleString() + '€'}")
+```
+
+
 ### Gastos por Capítulos
 ```{r gastos-capitulos-2021}
 plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos
+
+```{r ingresos-2021}
+ingresos %>%
+  filter(Año==año) %>%
+  unite(Categoría, Capítulo, Artículo, Concepto, sep='-') %>%
+  select(Categoría, Cantidad) %>%
+  sunburst(count = T, legend=F, explanation = "function(d){return d.value.toLocaleString() + '€'}")
 ```
 
 ### Ingresos por Capítulos
@@ -376,8 +399,18 @@ plot.ingresos.articulos(ingresos, año)
 plot.ingresos.conceptos(ingresos, año)
 ```
 
+### Inversiones 
+
+```{r inversiones-2021}
+inversiones <- read_csv("2021/inversiones.csv")
+inversiones %>%
+  select(DESCRIPCIÓN, Cantidad) %>%
+  sunburst(count = T, withD3 = T, legend = list(w=400))
+```
+
 
 # Presupuesto 2020 {.hidden}
+
 
 ```{r 2020}
 año <- 2020
