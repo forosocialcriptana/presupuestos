@@ -2,12 +2,14 @@
 title: "Presupuestos municipales de Campo de Criptana"
 output: 
   flexdashboard::flex_dashboard:
-    theme: cosmo
+    theme:
+      version: 4
+      bootswatch: cosmo
     orientation: rows
     horizontal_layout: fill
     logo: img/logo.png
     favicon: img/favicon.ico
-    css: custom.css
+    #css: custom.css
 ---
 
 ```{r setup, include=FALSE}
@@ -50,7 +52,7 @@ gastos <- read_csv("gastos.csv") %>%
     names_to = "Año", 
     names_ptypes = list(
       Año = factor(
-      levels = c("2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"), 
+      levels = c("2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"), 
       #ordered = TRUE
     )),
     values_to = "Cantidad") %>%
@@ -88,7 +90,7 @@ ingresos <- read_csv("ingresos.csv") %>%
     names_to = "Año",
     names_ptypes = list(
       Año = factor(
-        levels = c("2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"),
+        levels = c("2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"),
         #ordered = TRUE
         )),
     values_to = "Cantidad") %>%
@@ -169,27 +171,28 @@ plot.ingresos.conceptos <- function(ingresos, año){
 ```
 
 
-# Sidebar {.sidebar data-width=200}
+<!-- # Sidebar {.sidebar data-width=200} -->
 
-## Evolución
+<!-- ## Evolución  -->
 
-- [Gastos](#evolucion-gastos)
-- [Ingresos](#evolucion-ingresos)
+<!-- - [Gastos](#evolucion-gastos) -->
+<!-- - [Ingresos](#evolucion-ingresos) -->
 
-## Años
+<!-- ## Años -->
 
--  [2021](#presupuesto-2021)
--  [2020](#presupuesto-2020)
--  [2019](#presupuesto-2019)
--  [2018](#presupuesto-2018)
--  [2017](#presupuesto-2017)
--  [2016](#presupuesto-2016)
--  [2015](#presupuesto-2015)
--  [2014](#presupuesto-2014)
--  [2013](#presupuesto-2013)
--  [2012](#presupuesto-2012)
--  [2011](#presupuesto-2011)
--  [2010](#presupuesto-2010)
+<!-- -  [2022](#presupuesto-2022) -->
+<!-- -  [2021](#presupuesto-2021) -->
+<!-- -  [2020](#presupuesto-2020) -->
+<!-- -  [2019](#presupuesto-2019) -->
+<!-- -  [2018](#presupuesto-2018) -->
+<!-- -  [2017](#presupuesto-2017) -->
+<!-- -  [2016](#presupuesto-2016) -->
+<!-- -  [2015](#presupuesto-2015) -->
+<!-- -  [2014](#presupuesto-2014) -->
+<!-- -  [2013](#presupuesto-2013) -->
+<!-- -  [2012](#presupuesto-2012) -->
+<!-- -  [2011](#presupuesto-2011) -->
+<!-- -  [2010](#presupuesto-2010) -->
 
 # Explicación
 
@@ -320,7 +323,7 @@ Utiliza las siguientes divisiones:
 
 
 
-# Evolucion gastos {.hidden}
+# Evolucion gastos {data-navmenu="Evolución"}
 
 ## Column {.tabset}
 
@@ -338,7 +341,7 @@ p <- plot_ly(gastos.años, x = ~Año, y=~Cantidad, type = "bar", hoverinfo = 'te
 p
 ```
 
-### Evolución de los Gastos de los 10 mayores programas
+### Evolución de los Gastos de los mayores programas
 
 ```{r}
 # 10 mayores partidas
@@ -389,7 +392,7 @@ p <- gastos %>%
 p
 ```
 
-# Evolucion ingresos {.hidden}
+# Evolucion ingresos {data-navmenu="Evolución"}
 
 ## Column {.tabset}
 
@@ -451,7 +454,99 @@ p
 ```
 
 
-# Presupuesto 2021 {.hidden}
+# Presupuesto 2022 {data-navmenu="Años"}
+
+```{r 2022}
+año <- 2022
+```
+
+## Column
+
+### Total de Gasto
+
+```{r}
+valueBox(gasto.total(gastos, año), icon = "fa-euro")
+```
+
+### Gasto por habitante
+
+```{r}
+valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
+```
+
+
+
+## Column {.tabset}
+
+### Gastos
+
+[Presupuesto de Gastos de 2022 íntegro](2022/presupuesto-gastos-2022.pdf)
+
+```{r gastos-económica-2022}
+gastos %>%
+  filter(Año==año) %>% 
+  group_by(Capítulo, Artículo) %>% 
+  summarise(Cantidad=sum(Cantidad)) %>%
+  unite(Categoría, Capítulo, Artículo, sep='-') %>%
+  select(Categoría, Cantidad) %>%
+  sunburst(legend=F, explanation = "function(d){return d.value.toLocaleString() + '€'}")
+```
+
+### Gastos por programas
+
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas-2022}
+plot.gastos.programas(gastos.programas, año)
+```
+
+### Gastos por Capítulos
+```{r gastos-capitulos-2022}
+plot.gastos.capitulos(gastos, año)
+```
+
+### Ingresos
+
+[Presupuesto de Ingresos de 2022 íntegro](2022/presupuesto-ingresos-2022.pdf)
+
+```{r ingresos-2022}
+ingresos %>%
+  filter(Año==año) %>%
+  unite(Categoría, Capítulo, Artículo, Concepto, sep='-') %>%
+  select(Categoría, Cantidad) %>%
+  sunburst(legend=F, explanation = "function(d){return d.value.toLocaleString() + '€'}")
+```
+
+### Ingresos por Capítulos
+
+```{r ingresos-capitulos-2022}
+plot.ingresos.capitulos(ingresos, año)
+```
+
+### Ingresos por Artículos
+
+```{r ingresos-articulos-2022}
+plot.ingresos.articulos(ingresos, año)
+```
+
+### Ingresos por Conceptos
+
+```{r ingresos-conceptos-2022}
+plot.ingresos.conceptos(ingresos, año)
+```
+
+<!-- ### Inversiones  -->
+
+<!-- ```{r inversiones-2022} -->
+<!-- inversiones <- read_csv("2022/inversiones.csv") -->
+<!-- inversiones %>% -->
+<!--   select(DESCRIPCIÓN, Cantidad) %>% -->
+<!--   sunburst(legend = list(w=400), explanation = "function(d){return d.data.name + '<br>' + d.value.toLocaleString() + '€'}") -->
+<!-- ``` -->
+
+
+# Presupuesto 2021 {data-navmenu="Años"}
 
 ```{r 2021}
 año <- 2021
@@ -543,7 +638,7 @@ inversiones %>%
 ```
 
 
-# Presupuesto 2020 {.hidden}
+# Presupuesto 2020 {data-navmenu="Años"}
 
 
 ```{r 2020}
@@ -599,7 +694,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2019 {.hidden}
+# Presupuesto 2019 {data-navmenu="Años"}
 
 ```{r 2019}
 año <- 2019
@@ -654,7 +749,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2018 {.hidden}
+# Presupuesto 2018 {data-navmenu="Años"}
 
 ```{r 2018}
 año <- 2018
@@ -709,7 +804,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2017 {.hidden}
+# Presupuesto 2017 {data-navmenu="Años"}
 
 ```{r 2017}
 año <- 2017
@@ -764,7 +859,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2016 {.hidden}
+# Presupuesto 2016 {data-navmenu="Años"}
 
 ```{r 2016}
 año <- 2016
@@ -819,7 +914,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2015 {.hidden}
+# Presupuesto 2015 {data-navmenu="Años"}
 
 ```{r 2015}
 año <- 2015
@@ -874,7 +969,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2014 {.hidden}
+# Presupuesto 2014 {data-navmenu="Años"}
 
 ```{r 2014}
 año <- 2014
@@ -929,7 +1024,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2013 {.hidden}
+# Presupuesto 2013 {data-navmenu="Años"}
 
 ```{r 2013}
 año <- 2013
@@ -984,7 +1079,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2012 {.hidden}
+# Presupuesto 2012 {data-navmenu="Años"}
 
 ```{r 2012}
 año <- 2012
@@ -1039,7 +1134,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2011 {.hidden}
+# Presupuesto 2011 {data-navmenu="Años"}
 
 ```{r 2011}
 año <- 2011
@@ -1094,7 +1189,7 @@ plot.ingresos.conceptos(ingresos, año)
 ```
 
 
-# Presupuesto 2010 {.hidden}
+# Presupuesto 2010 {data-navmenu="Años"}
 
 ```{r 2010}
 año <- 2010
