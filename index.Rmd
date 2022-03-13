@@ -129,6 +129,22 @@ plot.gastos.programas <- function(gastos, año){
   return(p)
 }
 
+plot.variacion.gastos.programas <- function(gastos, año, limite = 10000){
+  gastos %>% 
+  filter(Año %in% c(año, año-1)) %>%
+  pivot_wider(names_from = Año, values_from = Cantidad) %>%
+  rename(actual = length(names(.))-1, anterior = length(names(.))) %>%
+  group_by(Programa) %>%
+  summarise(actual = sum(actual), anterior = sum(anterior)) %>%
+  mutate(Variación = actual-anterior) %>%
+  mutate(Porcentaje = Variación / anterior * 100, positive = Variación >= 0) %>%
+  # Programas con una mariación mayor 10000€
+  filter(abs(Variación) >= limite) %>%
+  plot_ly(y = ~Programa, x = ~Variación, color = ~positive, type = "bar", orientation = 'h', hoverinfo = 'text', 
+             hovertext = ~paste('Programa: ', Programa, '<br>Variación: ', format(Variación, decimal.mark=",", big.mark="."), "€  (", format(round(Porcentaje,2), decimal.mark=",", nsmall = 2), "%)")) %>%
+  layout(yaxis = list(categoryorder = "total descending"), showlegend = FALSE, xaxis = list(showgrid=T, zeroline=T, nticks=20, showline=F, title="Variación con respecto al año anterior", tickprefix = '€', tickformat=",.2r", hoverformat = '.2f'))
+}
+
 plot.gastos.capitulos <- function(gastos, año){
   gastos.capitulos <- gastos %>% filter(Año==año) %>% group_by(Capítulo) %>% summarise(Cantidad=sum(Cantidad))
   xaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
@@ -167,6 +183,22 @@ plot.ingresos.conceptos <- function(ingresos, año){
                text = ~paste(Concepto, '</br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€"), sort=T, direction="clockwise") %>%
     layout(xaxis=xaxis, yaxis=yaxis)
   return(p)
+}
+
+plot.variacion.ingresos.conceptos <- function(ingresos, año, limite = 10000){
+  ingresos %>% 
+  filter(Año %in% c(año, año-1)) %>%
+  pivot_wider(names_from = Año, values_from = Cantidad) %>%
+  rename(actual = length(names(.))-1, anterior = length(names(.))) %>%
+  group_by(Concepto) %>%
+  summarise(actual = sum(actual), anterior = sum(anterior)) %>%
+  mutate(Variación = actual-anterior) %>%
+  mutate(Porcentaje = Variación / anterior * 100, positive = Variación >= 0) %>%
+  # Programas con una mariación mayor 10000€
+  filter(abs(Variación) >= limite) %>%
+  plot_ly(y = ~Concepto, x = ~Variación, color = ~positive, type = "bar", orientation = 'h', hoverinfo = 'text', 
+             hovertext = ~paste('Concepto: ', Concepto, '<br>Variación: ', format(Variación, decimal.mark=",", big.mark="."), "€  (", format(round(Porcentaje,2), decimal.mark=",", nsmall = 2), "%)")) %>%
+  layout(yaxis = list(categoryorder = "total descending"), showlegend = FALSE, xaxis = list(showgrid=T, zeroline=T, nticks=20, showline=F, title="Variación con respecto al año anterior", tickprefix = '€', tickformat=",.2r", hoverformat = '.2f'))
 }
 ```
 
@@ -506,6 +538,12 @@ plot.gastos.programas(gastos.programas, año)
 plot.gastos.capitulos(gastos, año)
 ```
 
+### Variación gastos programas
+
+```{r variacion-gastos-programas-2022}
+plot.variacion.gastos.programas(gastos.programas, año)
+```
+
 ### Ingresos
 
 [Presupuesto de Ingresos de 2022 íntegro](2022/presupuesto-ingresos-2022.pdf)
@@ -535,6 +573,13 @@ plot.ingresos.articulos(ingresos, año)
 ```{r ingresos-conceptos-2022}
 plot.ingresos.conceptos(ingresos, año)
 ```
+
+### Variación ingresos conceptos
+
+```{r variacion-ingresos-conceptos-2022}
+plot.variacion.ingresos.conceptos(ingresos, año)
+```
+
 
 <!-- ### Inversiones  -->
 
