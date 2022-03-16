@@ -158,6 +158,15 @@ plot.gastos.capitulos <- function(gastos, año){
   return(p)
 }
 
+plot.inversiones <- function(inversiones, año){
+  inversiones %>% 
+  filter(Año == año) %>%
+  mutate(Porcentaje = Cantidad / sum(Cantidad) * 100) %>%
+  plot_ly(y = ~Descripción, x = ~Cantidad, type = "bar", orientation = 'h', hoverinfo = 'text', 
+             hovertext = ~paste('Inversión: ', Descripción, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€  (", format(round(Porcentaje,2), decimal.mark=",", nsmall = 2), "%)")) %>%
+  layout(title = paste("Inversiones", año), yaxis = list(categoryorder = "total descending", title = ""), showlegend = FALSE, xaxis = list(showgrid=T, zeroline=T, nticks=20, showline=F, tickprefix = '€', tickformat=",.2r", hoverformat = '.2f'))
+}
+
 plot.ingresos.capitulos <- function(ingresos, año){
   ingresos.capitulos <- ingresos %>% filter(Año==año) %>% group_by(Capítulo) %>% summarise(Cantidad=sum(Cantidad))
   xaxis <- list(showgrid=F, zeroline=F, showticklabels = F)
@@ -584,11 +593,10 @@ plot.variacion.ingresos.conceptos(ingresos, año)
 
 ### Inversiones
 
+#### Total inversiones: `r format(sum(inversiones[inversiones$Año == año, ]$Cantidad), decimal.mark=",", big.mark=".")` €.
+
 ```{r inversiones-2022}
-inversiones %>%
-  filter(Año == año) %>%
-  select(Descripción, Cantidad) %>%
-  sunburst(legend = list(w=400), explanation = "function(d){return d.data.name + '<br>' + d.value.toLocaleString() + '€'}")
+plot.inversiones(inversiones, año)
 ```
 
 
@@ -676,11 +684,10 @@ plot.ingresos.conceptos(ingresos, año)
 
 ### Inversiones 
 
+#### Total inversiones: `r format(sum(inversiones[inversiones$Año == año, ]$Cantidad), decimal.mark=",", big.mark=".")` €.
+
 ```{r inversiones-2021}
-inversiones %>%
-  filter(Año == año) %>%
-  select(Descripción, Cantidad) %>%
-  sunburst(legend = list(w=400), explanation = "function(d){return d.data.name + '<br>' + d.value.toLocaleString() + '€'}")
+plot.inversiones(inversiones, año)
 ```
 
 
