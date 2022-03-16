@@ -103,6 +103,9 @@ ingresos <- read_csv("ingresos.csv") %>%
   left_join(articulos, by=c("cod.articulo"="Código")) %>%
   left_join(conceptos, by=c("cod.concepto"="Código"))
 
+# Carga de inversiones
+inversiones <- read_csv("inversiones.csv")
+
 # Carga de cargos desde Excel 
 cargos <- read.xlsx("2017/gastos-2017.xlsx", sheetName = "Cargos")
 ```
@@ -506,8 +509,6 @@ valueBox(gasto.total(gastos, año), icon = "fa-euro")
 valueBox(gasto.habitante(censo, gastos, año), icon = "fa-user")
 ```
 
-
-
 ## Column {.tabset}
 
 ### Gastos
@@ -581,14 +582,14 @@ plot.variacion.ingresos.conceptos(ingresos, año)
 ```
 
 
-<!-- ### Inversiones  -->
+### Inversiones
 
-<!-- ```{r inversiones-2022} -->
-<!-- inversiones <- read_csv("2022/inversiones.csv") -->
-<!-- inversiones %>% -->
-<!--   select(DESCRIPCIÓN, Cantidad) %>% -->
-<!--   sunburst(legend = list(w=400), explanation = "function(d){return d.data.name + '<br>' + d.value.toLocaleString() + '€'}") -->
-<!-- ``` -->
+```{r inversiones-2022}
+inversiones %>%
+  filter(Año == año) %>%
+  select(Descripción, Cantidad) %>%
+  sunburst(legend = list(w=400), explanation = "function(d){return d.data.name + '<br>' + d.value.toLocaleString() + '€'}")
+```
 
 
 # Presupuesto 2021 {data-navmenu="Años"}
@@ -676,9 +677,9 @@ plot.ingresos.conceptos(ingresos, año)
 ### Inversiones 
 
 ```{r inversiones-2021}
-inversiones <- read_csv("2021/inversiones.csv")
 inversiones %>%
-  select(DESCRIPCIÓN, Cantidad) %>%
+  filter(Año == año) %>%
+  select(Descripción, Cantidad) %>%
   sunburst(legend = list(w=400), explanation = "function(d){return d.data.name + '<br>' + d.value.toLocaleString() + '€'}")
 ```
 
