@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Presupuestos municipales de Campo de Criptana - Presupuestos r params$año</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./img/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/sequences-0.1/sequences.css" rel="stylesheet">
+<script src="site_libs/sunburst-binding-2.1.8/sunburst.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="quarto-dashboard nav-sidebar nav-fixed dashboard-fill fullcontent">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./img/logo-cuadrado.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Presupuestos municipales de Campo de Criptana</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./explicacion.html"> 
+<span class="menu-text">Explicación</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-evolución" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Evolución</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-evolución">    
+        <li>
+    <a class="dropdown-item" href="./evolucion-ingresos.html">
+ <span class="dropdown-text">Ingresos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./evolucion-gastos.html">
+ <span class="dropdown-text">Gastos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-años" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Años</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-años">    
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2024.html">
+ <span class="dropdown-text">2024</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2023.html">
+ <span class="dropdown-text">2023</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2022.html">
+ <span class="dropdown-text">2022</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2021.html">
+ <span class="dropdown-text">2021</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2020.html">
+ <span class="dropdown-text">2020</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2019.html">
+ <span class="dropdown-text">2019</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2018.html">
+ <span class="dropdown-text">2018</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2017.html">
+ <span class="dropdown-text">2017</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2016.html">
+ <span class="dropdown-text">2016</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2015.html">
+ <span class="dropdown-text">2015</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2014.html">
+ <span class="dropdown-text">2014</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2013.html">
+ <span class="dropdown-text">2013</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2012.html">
+ <span class="dropdown-text">2012</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2011.html">
+ <span class="dropdown-text">2011</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presupuestos-2010.html">
+ <span class="dropdown-text">2010</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/forosocialcriptana/presupuestos"> 
+<span class="menu-text">GitHub</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Presupuestos 2024</a></div>
+        
+        
+      </div>
+    </div>
+</div>
+</nav>
+</header></header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-calendar-fill"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Año
+</p>
+<p class="value-box-value">
+2024
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-bank2"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Presupuesto Total
+</p>
+<p class="value-box-value">
+12.107.802 €
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-person"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Presupuesto por habitante
+</p>
+<p class="value-box-value">
+934,24 €
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-buildings"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Inversiones
+</p>
+<p class="value-box-value">
+105.727,1 €
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="card tabset bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
+
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-5"><li class="nav-item" role="presentation"><a href="#card-tabset-5-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Gastos" aria-selected="true" class="nav-link active">Gastos</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Gastos por Programas" aria-selected="false" class="nav-link">Gastos por Programas</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Gastos por Capítulos" aria-selected="false" class="nav-link">Gastos por Capítulos</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-4" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Variación Gastos Programas" aria-selected="false" class="nav-link">Variación Gastos Programas</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-5" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Ingresos" aria-selected="false" class="nav-link">Ingresos</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-6" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Ingresos por Capítulos" aria-selected="false" class="nav-link">Ingresos por Capítulos</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-7" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Ingresos por Artículos" aria-selected="false" class="nav-link">Ingresos por Artículos</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-8" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Ingresos por Conceptos" aria-selected="false" class="nav-link">Ingresos por Conceptos</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-9" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Variación Ingresos Conceptos" aria-selected="false" class="nav-link">Variación Ingresos Conceptos</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-5-10" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Inversiones" aria-selected="false" class="nav-link">Inversiones</a></li></ul></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-5"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-1"><div class="card-body html-fill-item html-fill-container" data-title="Gastos">
+<a href="doc/2024/presupuesto-gastos-2024.pdf">Presupuesto de Gastos de 2024 íntegro</a>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="sunburst html-widget html-fill-item html-fill-container" id="htmlwidget-405a895dbd570769079c" style="width:100%;height:406px; position:relative;">
+<div class="html-fill-item html-fill-container">
+<div class="sunburst-main html-fill-item html-fill-container">
+<div class="sunburst-sequence html-fill-item html-fill-container"></div>
+<div class="sunburst-chart html-fill-item html-fill-container">
+<div class="sunburst-explanation html-fill-item html-fill-container" style="visibility:hidden;"></div>
+</div>
+</div>
+<div class="sunburst-sidebar html-fill-item html-fill-container">
+<input type="checkbox" class="sunburst-togglelegend" style="visibility:hidden;">Legend
+<div class="sunburst-legend html-fill-item html-fill-container" style="visibility:hidden;"></div>
+</div>
+</div>
+</div>
+<script type="application/json" data-for="htmlwidget-405a895dbd570769079c">{"x":{"data":{"children":[{"name":"Activos financieros","children":[{"name":"Concesión de préstamos fuera del sector público","size":5000,"colname":"X2"}],"colname":"X1"},{"name":"Fondo de contingencia y otros imprevistos","children":[{"name":"Dotación al fondo de contingencia de ejecución presupuestaria","size":30000,"colname":"X2"}],"colname":"X1"},{"name":"Gastos de personal","children":[{"name":"Cuotas, prestaciones y gastos sociales a cargo del empleador","size":1453421.39,"colname":"X2"},{"name":"Incentivos al rendimiento","size":293537.29,"colname":"X2"},{"name":"Personal funcionario","size":1465849.39,"colname":"X2"},{"name":"Personal laboral","size":2943829.01,"colname":"X2"},{"name":"Órganos de gobierno y personal directivo","size":150000,"colname":"X2"}],"colname":"X1"},{"name":"Gastos en bienes corrientes y servicios","children":[{"name":"Arrendamientos y cánones","size":47468,"colname":"X2"},{"name":"Gastos de publicaciones","size":3500,"colname":"X2"},{"name":"Indemnizaciones por razón de servicio","size":43246.46,"colname":"X2"},{"name":"Material, suministros y otros","size":3738123.45,"colname":"X2"},{"name":"Reparaciones, mantenimiento y conservación","size":252930,"colname":"X2"},{"name":"Trabajos realizados por administraciones públicas y otras entidades públicas","size":962415.99,"colname":"X2"},{"name":"Trabajos realizados por instituciones sin fines de lucro","size":94700,"colname":"X2"}],"colname":"X1"},{"name":"Gastos financieros – Intereses","children":[{"name":"De préstamos y otras operaciones financieras","size":95178,"colname":"X2"},{"name":"Intereses de demora y otros gastos financieros","size":34000,"colname":"X2"}],"colname":"X1"},{"name":"Inversiones reales","children":[{"name":"Gastos en inversiones de carácter inmaterial","size":1276.15,"colname":"X2"},{"name":"Inversiones de reposición de infraestructuras y bienes destinados al uso general","size":9000,"colname":"X2"},{"name":"Inversión de reposición asociada al funcionamiento operativo de los servicios","size":23651,"colname":"X2"},{"name":"Inversión nueva asociada al funcionamiento operativo de los servicios","size":49500,"colname":"X2"},{"name":"Inversión nueva en infraestructura y bienes destinados al uso general","size":50000,"colname":"X2"},{"name":"NA","size":0,"colname":"X2"}],"colname":"X1"},{"name":"Pasivos financieros","children":[{"name":"Amortización de operaciones y préstamos en euros","size":69426.29,"colname":"X2"}],"colname":"X1"},{"name":"Transferencias corrientes","children":[{"name":"A empresas privadas","size":0,"colname":"X2"},{"name":"A entidades locales","size":9050,"colname":"X2"},{"name":"A familias e instituciones sin fines de lucro","size":270700,"colname":"X2"},{"name":"A la Administración del Estado","size":12000,"colname":"X2"},{"name":"Al exterior","size":0,"colname":"X2"}],"colname":"X1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":"function(d){return d.value.toLocaleString() + '€'}","breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":["options.explanation"],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-2"><div class="card-body html-fill-item html-fill-container" data-title="Gastos por Programas">
+<p>Hacer clic en cada programa de la leyenda para activarlo o desactivarlo. Desplazar la leyenda para ver el resto de programas.</p>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-799e24d7ff53abe4b49a" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-799e24d7ff53abe4b49a">{"x":{"visdat":{"5f6db38cdfaed":["function () ","plotlyVisDat"]},"cur_data":"5f6db38cdfaed","attrs":{"5f6db38cdfaed":{"labels":{},"values":{},"textposition":"none","hoverinfo":"text+percent","text":{},"sort":true,"direction":"clockwise","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"legend":{"font":{"color":"steelblue"}},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Seguridad y orden público","Administración general","Recogida, gestión y tratamiento de residuos","Abastecimiento domiciliario de agua potable","Instalaciones deportivas","Asistencia social primaria: Servicio de ayuda a domicilio","Política económica y fiscal","Administración general de vivienda y urbanismo","Asistencia social primaria: Centro ocupacional","Asistencia social primaria: Centro social","Depuración de aguas","Alumbrado público","Administración general del medio ambiente","Servicios complementarios de educación: Escuela de música y danza","Asistencia social primaria: Centro Día y Aula Mayores de 50","Órganos de gobierno","Fiestas populares y festejos","Funcionamiento de centros docentes: Colegios","Deuda pública","Limpieza viaria","Asistencia social primaria: Centro mujer","Administración general de agricultura, ganadería y pesca","Promoción y fomento del deporte","Fondo de contingencia","Equipamientos culturales y museos","Asistencia social primaria: Vivienda tutelada","Funcionamiento de centros docentes: Escuela infantil","Cementerio y servicios funerarios","Fomento del empleo","Sociedad de la información","Promoción cultural","Caminos vecinales","Gestión del sistema tributario","Ocio y tiempo libre","Información y promoción turística",null,"Promoción cultural: Universidad popular","Asistencia social primaria: Cofinanciación plan concertado FSE","Eliminación antenas televisión barrio Albaicín","Desarrollo empresarial","Administración general de cultura","Equipamientos culturales y museos: Teatro","Equipamiento de contenido para uno de los molinos de la sierra","Alcantarillado","Bibliotecas públicas","Oficina de defensa del consumidor","Vías públicas: otros gastos","Administración general del deporte","Servicios complementarios de educación","Asistencia social primaria","Información y promoción turística: 12 Vientos, 12 Aventuras","Participación ciudadana","Instalaciones de ocupación del tiempo libre: Auditorio","Fiestas populares y festejos: Cultura","Protección de la salubridad pública","Protección y gestión del patrimonio histórico-artístico","Instalaciones de ocupación del tiempo libre: Casa de asociaciones","Equipamientos culturales y museos: El pósito","Fiestas populares y festejos: Juventud","Fiestas populares y festejos: Hermandades","Coordinación y organización institucional de las entidades locales","Otras prestaciones económicas a favor de empleados","Urbanismo: planeamiento, gestión, ejecución y disciplina urbanística","Desarrollo empresarial: Escuela de catadores","Seguridad del tráfico y del estacionamiento","Comercio ambulante","Infraestructuras del transporte","Escuela de música y danza","Servicio de prevención y extinción de incendios","Información y promoción turística: Festival Internacional de Música","Otras actuaciones en agricultura, ganaderia y pesca","DESCONOCIDO","Activa Jóven","Administración general de educación","Archivos","Artes escénicas","Asistencia social primaria: Apoyo psicológico un. convivencial","Bibliotecas y archivos","Comercio","Dinamizador juvenil","Educación infantil","Ferias","Gestión del Patrimonio Histórico-Artístico: Obras mejora conjunto histórico Albaicín","Gestión del conocimiento","Gestión del patrimonio","Información y promoción turística: Escuela de catadores","Información y promoción turística: Plan de sostenibilidad turística en destino","Instalaciones de ocupación del tiempo libre","Ludoteca","Modificación rehabilitación Casa Torrecilla","Participación ciudadana: Juventud","Pavimentación de vías públicas","Pensiones","Personas dependientes: Centro Día","Personas dependientes: Centro ocupacional","Personas dependientes: Servicio de ayuda a domicilio","Personas dependientes: Vivienda tutelada","Plan de acción local SEPECAM","Plan de empleo de la Diputación","Plan especial de empleo de Diputación","Plan especial de empleo de Diputación – acción extraordinaria","Plan especial de empleo de Diputación – plan de emergencia","Plan genera","Promoción social: Ayuda integración inmigrantes","Promoción social: Centro mujer","Promoción social: Insertor laboral","Promoción social: Mediación intercultural SAMI","Promoción social: Prevención conflicto social","Promoción social: Proyecto de atención a familia y a infancia","Promoción, mantenimiento y desarrollo del transporte","Protección civil","Protección contra la contaminación acústica, lumínica y atmosférica","Protección y mejora del medio ambiente","Recursos hidráulicos","Saneamiento de aguas","Taller de empleo SEPECAM","Taller de empleo: Técnico comercial de equipos mecánicos y eléctricos","Transferencias a la Administración General del Estado","Vías públicas"],"values":[949369.52000000002,930960.95999999996,882325.98999999999,844500,579851.89000000001,553608,523128.57000000001,494390.28999999998,410630.46999999997,366147.21000000002,350000,309651,290346.25,288510.98999999999,287821.78999999998,249552.64000000001,243800,231424.20999999999,198604.29000000001,197253.91,180875.98999999999,172313.48999999999,162800,160671,138754.76999999999,136098.48000000001,132863.07999999999,127754.06,120000,118541.34,114900,106340,97000,93200,89430.550000000003,86665.949999999997,62238.879999999997,61142.169999999998,50000,44613.699999999997,43095.610000000001,42650,42000,36730,35628.57,35090.360000000001,35000,34558.050000000003,33682.879999999997,31500,29500,25000,23500,21500,20414,19400,18700,18350,16000,15500,14300,14000,14000,11000,10350,8863.5100000000002,8404,4000,2700,2000,1800,504,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"textposition":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"hoverinfo":["text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent"],"text":["Seguridad y orden público <\/br>Cantidad:  949.369,52 €","Administración general <\/br>Cantidad:  930.960,96 €","Recogida, gestión y tratamiento de residuos <\/br>Cantidad:  882.325,99 €","Abastecimiento domiciliario de agua potable <\/br>Cantidad:  844.500,00 €","Instalaciones deportivas <\/br>Cantidad:  579.851,89 €","Asistencia social primaria: Servicio de ayuda a domicilio <\/br>Cantidad:  553.608,00 €","Política económica y fiscal <\/br>Cantidad:  523.128,57 €","Administración general de vivienda y urbanismo <\/br>Cantidad:  494.390,29 €","Asistencia social primaria: Centro ocupacional <\/br>Cantidad:  410.630,47 €","Asistencia social primaria: Centro social <\/br>Cantidad:  366.147,21 €","Depuración de aguas <\/br>Cantidad:  350.000,00 €","Alumbrado público <\/br>Cantidad:  309.651,00 €","Administración general del medio ambiente <\/br>Cantidad:  290.346,25 €","Servicios complementarios de educación: Escuela de música y danza <\/br>Cantidad:  288.510,99 €","Asistencia social primaria: Centro Día y Aula Mayores de 50 <\/br>Cantidad:  287.821,79 €","Órganos de gobierno <\/br>Cantidad:  249.552,64 €","Fiestas populares y festejos <\/br>Cantidad:  243.800,00 €","Funcionamiento de centros docentes: Colegios <\/br>Cantidad:  231.424,21 €","Deuda pública <\/br>Cantidad:  198.604,29 €","Limpieza viaria <\/br>Cantidad:  197.253,91 €","Asistencia social primaria: Centro mujer <\/br>Cantidad:  180.875,99 €","Administración general de agricultura, ganadería y pesca <\/br>Cantidad:  172.313,49 €","Promoción y fomento del deporte <\/br>Cantidad:  162.800,00 €","Fondo de contingencia <\/br>Cantidad:  160.671,00 €","Equipamientos culturales y museos <\/br>Cantidad:  138.754,77 €","Asistencia social primaria: Vivienda tutelada <\/br>Cantidad:  136.098,48 €","Funcionamiento de centros docentes: Escuela infantil <\/br>Cantidad:  132.863,08 €","Cementerio y servicios funerarios <\/br>Cantidad:  127.754,06 €","Fomento del empleo <\/br>Cantidad:  120.000,00 €","Sociedad de la información <\/br>Cantidad:  118.541,34 €","Promoción cultural <\/br>Cantidad:  114.900,00 €","Caminos vecinales <\/br>Cantidad:  106.340,00 €","Gestión del sistema tributario <\/br>Cantidad:   97.000,00 €","Ocio y tiempo libre <\/br>Cantidad:   93.200,00 €","Información y promoción turística <\/br>Cantidad:   89.430,55 €","NA <\/br>Cantidad:   86.665,95 €","Promoción cultural: Universidad popular <\/br>Cantidad:   62.238,88 €","Asistencia social primaria: Cofinanciación plan concertado FSE <\/br>Cantidad:   61.142,17 €","Eliminación antenas televisión barrio Albaicín <\/br>Cantidad:   50.000,00 €","Desarrollo empresarial <\/br>Cantidad:   44.613,70 €","Administración general de cultura <\/br>Cantidad:   43.095,61 €","Equipamientos culturales y museos: Teatro <\/br>Cantidad:   42.650,00 €","Equipamiento de contenido para uno de los molinos de la sierra <\/br>Cantidad:   42.000,00 €","Alcantarillado <\/br>Cantidad:   36.730,00 €","Bibliotecas públicas <\/br>Cantidad:   35.628,57 €","Oficina de defensa del consumidor <\/br>Cantidad:   35.090,36 €","Vías públicas: otros gastos <\/br>Cantidad:   35.000,00 €","Administración general del deporte <\/br>Cantidad:   34.558,05 €","Servicios complementarios de educación <\/br>Cantidad:   33.682,88 €","Asistencia social primaria <\/br>Cantidad:   31.500,00 €","Información y promoción turística: 12 Vientos, 12 Aventuras <\/br>Cantidad:   29.500,00 €","Participación ciudadana <\/br>Cantidad:   25.000,00 €","Instalaciones de ocupación del tiempo libre: Auditorio <\/br>Cantidad:   23.500,00 €","Fiestas populares y festejos: Cultura <\/br>Cantidad:   21.500,00 €","Protección de la salubridad pública <\/br>Cantidad:   20.414,00 €","Protección y gestión del patrimonio histórico-artístico <\/br>Cantidad:   19.400,00 €","Instalaciones de ocupación del tiempo libre: Casa de asociaciones <\/br>Cantidad:   18.700,00 €","Equipamientos culturales y museos: El pósito <\/br>Cantidad:   18.350,00 €","Fiestas populares y festejos: Juventud <\/br>Cantidad:   16.000,00 €","Fiestas populares y festejos: Hermandades <\/br>Cantidad:   15.500,00 €","Coordinación y organización institucional de las entidades locales <\/br>Cantidad:   14.300,00 €","Otras prestaciones económicas a favor de empleados <\/br>Cantidad:   14.000,00 €","Urbanismo: planeamiento, gestión, ejecución y disciplina urbanística <\/br>Cantidad:   14.000,00 €","Desarrollo empresarial: Escuela de catadores <\/br>Cantidad:   11.000,00 €","Seguridad del tráfico y del estacionamiento <\/br>Cantidad:   10.350,00 €","Comercio ambulante <\/br>Cantidad:    8.863,51 €","Infraestructuras del transporte <\/br>Cantidad:    8.404,00 €","Escuela de música y danza <\/br>Cantidad:    4.000,00 €","Servicio de prevención y extinción de incendios <\/br>Cantidad:    2.700,00 €","Información y promoción turística: Festival Internacional de Música <\/br>Cantidad:    2.000,00 €","Otras actuaciones en agricultura, ganaderia y pesca <\/br>Cantidad:    1.800,00 €","DESCONOCIDO <\/br>Cantidad:      504,00 €","Activa Jóven <\/br>Cantidad:        0,00 €","Administración general de educación <\/br>Cantidad:        0,00 €","Archivos <\/br>Cantidad:        0,00 €","Artes escénicas <\/br>Cantidad:        0,00 €","Asistencia social primaria: Apoyo psicológico un. convivencial <\/br>Cantidad:        0,00 €","Bibliotecas y archivos <\/br>Cantidad:        0,00 €","Comercio <\/br>Cantidad:        0,00 €","Dinamizador juvenil <\/br>Cantidad:        0,00 €","Educación infantil <\/br>Cantidad:        0,00 €","Ferias <\/br>Cantidad:        0,00 €","Gestión del Patrimonio Histórico-Artístico: Obras mejora conjunto histórico Albaicín <\/br>Cantidad:        0,00 €","Gestión del conocimiento <\/br>Cantidad:        0,00 €","Gestión del patrimonio <\/br>Cantidad:        0,00 €","Información y promoción turística: Escuela de catadores <\/br>Cantidad:        0,00 €","Información y promoción turística: Plan de sostenibilidad turística en destino <\/br>Cantidad:        0,00 €","Instalaciones de ocupación del tiempo libre <\/br>Cantidad:        0,00 €","Ludoteca <\/br>Cantidad:        0,00 €","Modificación rehabilitación Casa Torrecilla <\/br>Cantidad:        0,00 €","Participación ciudadana: Juventud <\/br>Cantidad:        0,00 €","Pavimentación de vías públicas <\/br>Cantidad:        0,00 €","Pensiones <\/br>Cantidad:        0,00 €","Personas dependientes: Centro Día <\/br>Cantidad:        0,00 €","Personas dependientes: Centro ocupacional <\/br>Cantidad:        0,00 €","Personas dependientes: Servicio de ayuda a domicilio <\/br>Cantidad:        0,00 €","Personas dependientes: Vivienda tutelada <\/br>Cantidad:        0,00 €","Plan de acción local SEPECAM <\/br>Cantidad:        0,00 €","Plan de empleo de la Diputación <\/br>Cantidad:        0,00 €","Plan especial de empleo de Diputación <\/br>Cantidad:        0,00 €","Plan especial de empleo de Diputación – acción extraordinaria <\/br>Cantidad:        0,00 €","Plan especial de empleo de Diputación – plan de emergencia <\/br>Cantidad:        0,00 €","Plan genera <\/br>Cantidad:        0,00 €","Promoción social: Ayuda integración inmigrantes <\/br>Cantidad:        0,00 €","Promoción social: Centro mujer <\/br>Cantidad:        0,00 €","Promoción social: Insertor laboral <\/br>Cantidad:        0,00 €","Promoción social: Mediación intercultural SAMI <\/br>Cantidad:        0,00 €","Promoción social: Prevención conflicto social <\/br>Cantidad:        0,00 €","Promoción social: Proyecto de atención a familia y a infancia <\/br>Cantidad:        0,00 €","Promoción, mantenimiento y desarrollo del transporte <\/br>Cantidad:        0,00 €","Protección civil <\/br>Cantidad:        0,00 €","Protección contra la contaminación acústica, lumínica y atmosférica <\/br>Cantidad:        0,00 €","Protección y mejora del medio ambiente <\/br>Cantidad:        0,00 €","Recursos hidráulicos <\/br>Cantidad:        0,00 €","Saneamiento de aguas <\/br>Cantidad:        0,00 €","Taller de empleo SEPECAM <\/br>Cantidad:        0,00 €","Taller de empleo: Técnico comercial de equipos mecánicos y eléctricos <\/br>Cantidad:        0,00 €","Transferencias a la Administración General del Estado <\/br>Cantidad:        0,00 €","Vías públicas <\/br>Cantidad:        0,00 €"],"sort":true,"direction":"clockwise","type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-3"><div class="card-body html-fill-item html-fill-container" data-title="Gastos por Capítulos">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-74937b675a0d6e670f94" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-74937b675a0d6e670f94">{"x":{"visdat":{"5f6db21b56d85":["function () ","plotlyVisDat"]},"cur_data":"5f6db21b56d85","attrs":{"5f6db21b56d85":{"labels":{},"values":{},"textposition":"none","hoverinfo":"text+percent","text":{},"sort":true,"direction":"clockwise","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"legend":{"font":{"color":"steelblue"}},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Activos financieros","Fondo de contingencia y otros imprevistos","Gastos de personal","Gastos en bienes corrientes y servicios","Gastos financieros – Intereses","Inversiones reales","Pasivos financieros","Transferencias corrientes"],"values":[5000,30000,6306637.0800000001,5142383.9000000004,129178,133427.14999999999,69426.290000000008,291750],"textposition":["none","none","none","none","none","none","none","none"],"hoverinfo":["text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent"],"text":["Activos financieros <\/br>Cantidad:      5.000,00 €","Fondo de contingencia y otros imprevistos <\/br>Cantidad:     30.000,00 €","Gastos de personal <\/br>Cantidad:  6.306.637,08 €","Gastos en bienes corrientes y servicios <\/br>Cantidad:  5.142.383,90 €","Gastos financieros – Intereses <\/br>Cantidad:    129.178,00 €","Inversiones reales <\/br>Cantidad:    133.427,15 €","Pasivos financieros <\/br>Cantidad:     69.426,29 €","Transferencias corrientes <\/br>Cantidad:    291.750,00 €"],"sort":true,"direction":"clockwise","type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-4"><div class="card-body html-fill-item html-fill-container" data-title="Variación Gastos Programas">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-73936e4b38c13d8fe895" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-73936e4b38c13d8fe895">{"x":{"visdat":{"5f6db15a95b4b":["function () ","plotlyVisDat"]},"cur_data":"5f6db15a95b4b","attrs":{"5f6db15a95b4b":{"y":{},"x":{},"orientation":"h","hoverinfo":"text","hovertext":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"categoryorder":"total descending","tickfont":{"color":"steelblue"},"titlefont":{"color":"steelblue"},"title":{"color":"steelblue"},"type":"category","categoryarray":["Administración general","Administración general de vivienda y urbanismo","Administración general del medio ambiente","Alumbrado público","Asistencia social primaria","Asistencia social primaria: Centro social","Asistencia social primaria: Servicio de ayuda a domicilio","Bibliotecas públicas","Cementerio y servicios funerarios","Depuración de aguas","Desarrollo empresarial: Escuela de catadores","Deuda pública","Fiestas populares y festejos: Hermandades","Fomento del empleo","Fondo de contingencia","Funcionamiento de centros docentes: Colegios","Información y promoción turística","Instalaciones deportivas","Limpieza viaria","Modificación rehabilitación Casa Torrecilla","Órganos de gobierno","Participación ciudadana","Protección y gestión del patrimonio histórico-artístico","Recogida, gestión y tratamiento de residuos","Seguridad y orden público","Servicios complementarios de educación: Escuela de música y danza","Sociedad de la información","Vías públicas: otros gastos"]},"showlegend":false,"xaxis":{"domain":[0,1],"automargin":true,"showgrid":true,"zeroline":true,"nticks":20,"showline":false,"title":"Variación con respecto al año anterior","titlefont":{"color":"steelblue"},"tickprefix":"€","tickformat":",.2r","hoverformat":".2f","tickfont":{"color":"steelblue"}},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":["Administración general","Alumbrado público","Asistencia social primaria","Bibliotecas públicas","Cementerio y servicios funerarios","Depuración de aguas","Desarrollo empresarial: Escuela de catadores","Fiestas populares y festejos: Hermandades","Fomento del empleo","Funcionamiento de centros docentes: Colegios","Modificación rehabilitación Casa Torrecilla","Protección y gestión del patrimonio histórico-artístico","Servicios complementarios de educación: Escuela de música y danza","Vías públicas: otros gastos"],"x":[-29690.680000000051,-117349,-27700,-27381.370000000003,-37326.380000000005,-70000,-13500,-16000,-60000,-16594.809999999998,-70000,-38373.239999999998,-38443.489999999991,-31140.970000000001],"orientation":"h","hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"hovertext":["Programa:  Administración general <br>Variación:   -29.690,68 €  (   -3,09 %)","Programa:  Alumbrado público <br>Variación:  -117.349,00 €  (  -27,48 %)","Programa:  Asistencia social primaria <br>Variación:   -27.700,00 €  (  -46,79 %)","Programa:  Bibliotecas públicas <br>Variación:   -27.381,37 €  (  -43,46 %)","Programa:  Cementerio y servicios funerarios <br>Variación:   -37.326,38 €  (  -22,61 %)","Programa:  Depuración de aguas <br>Variación:   -70.000,00 €  (  -16,67 %)","Programa:  Desarrollo empresarial: Escuela de catadores <br>Variación:   -13.500,00 €  (  -55,10 %)","Programa:  Fiestas populares y festejos: Hermandades <br>Variación:   -16.000,00 €  (  -50,79 %)","Programa:  Fomento del empleo <br>Variación:   -60.000,00 €  (  -33,33 %)","Programa:  Funcionamiento de centros docentes: Colegios <br>Variación:   -16.594,81 €  (   -6,69 %)","Programa:  Modificación rehabilitación Casa Torrecilla <br>Variación:   -70.000,00 €  ( -100,00 %)","Programa:  Protección y gestión del patrimonio histórico-artístico <br>Variación:   -38.373,24 €  (  -66,42 %)","Programa:  Servicios complementarios de educación: Escuela de música y danza <br>Variación:   -38.443,49 €  (  -11,76 %)","Programa:  Vías públicas: otros gastos <br>Variación:   -31.140,97 €  (  -47,08 %)"],"type":"bar","name":"FALSE","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":["Administración general de vivienda y urbanismo","Administración general del medio ambiente","Asistencia social primaria: Centro social","Asistencia social primaria: Servicio de ayuda a domicilio","Deuda pública","Fondo de contingencia","Información y promoción turística","Instalaciones deportivas","Limpieza viaria","Participación ciudadana","Recogida, gestión y tratamiento de residuos","Seguridad y orden público","Sociedad de la información","Órganos de gobierno"],"x":[15691.489999999991,19166.510000000009,25423.080000000016,93540,73192.290000000008,72671,23637.779999999999,101231.09000000003,21283.760000000009,20000,193245.01000000001,87282.550000000047,21055.410000000003,14426.260000000009],"orientation":"h","hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"hovertext":["Programa:  Administración general de vivienda y urbanismo <br>Variación:    15.691,49 €  (    3,28 %)","Programa:  Administración general del medio ambiente <br>Variación:    19.166,51 €  (    7,07 %)","Programa:  Asistencia social primaria: Centro social <br>Variación:    25.423,08 €  (    7,46 %)","Programa:  Asistencia social primaria: Servicio de ayuda a domicilio <br>Variación:    93.540,00 €  (   20,33 %)","Programa:  Deuda pública <br>Variación:    73.192,29 €  (   58,36 %)","Programa:  Fondo de contingencia <br>Variación:    72.671,00 €  (   82,58 %)","Programa:  Información y promoción turística <br>Variación:    23.637,78 €  (   35,93 %)","Programa:  Instalaciones deportivas <br>Variación:   101.231,09 €  (   21,15 %)","Programa:  Limpieza viaria <br>Variación:    21.283,76 €  (   12,10 %)","Programa:  Participación ciudadana <br>Variación:    20.000,00 €  (  400,00 %)","Programa:  Recogida, gestión y tratamiento de residuos <br>Variación:   193.245,01 €  (   28,04 %)","Programa:  Seguridad y orden público <br>Variación:    87.282,55 €  (   10,12 %)","Programa:  Sociedad de la información <br>Variación:    21.055,41 €  (   21,60 %)","Programa:  Órganos de gobierno <br>Variación:    14.426,26 €  (    6,14 %)"],"type":"bar","name":"TRUE","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-5"><div class="card-body html-fill-item html-fill-container" data-title="Ingresos">
+<a href="doc/2024/presupuesto-ingresos-2024.pdf">Presupuesto de Ingresos de 2024 íntegro</a>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="sunburst html-widget html-fill-item html-fill-container" id="htmlwidget-cd238763899c36f8c137" style="width:100%;height:406px; position:relative;">
+<div class="html-fill-item html-fill-container">
+<div class="sunburst-main html-fill-item html-fill-container">
+<div class="sunburst-sequence html-fill-item html-fill-container"></div>
+<div class="sunburst-chart html-fill-item html-fill-container">
+<div class="sunburst-explanation html-fill-item html-fill-container" style="visibility:hidden;"></div>
+</div>
+</div>
+<div class="sunburst-sidebar html-fill-item html-fill-container">
+<input type="checkbox" class="sunburst-togglelegend" style="visibility:hidden;">Legend
+<div class="sunburst-legend html-fill-item html-fill-container" style="visibility:hidden;"></div>
+</div>
+</div>
+</div>
+<script type="application/json" data-for="htmlwidget-cd238763899c36f8c137">{"x":{"data":{"children":[{"name":"Impuestos directos","children":[{"name":"Impuestos sobre el capital","children":[{"name":"IBI naturaleza rústica","size":217000,"colname":"X3"},{"name":"IBI naturaleza urbana","size":3081000,"colname":"X3"},{"name":"IBI naturaleza urbana","size":0,"colname":"X3"},{"name":"NA","size":500,"colname":"X3"},{"name":"Impuesto sobre vehículos de tracción mecánica","size":850000,"colname":"X3"},{"name":"Impuesto incremento valor terrenos de naturaleza urbana","size":30000,"colname":"X3"},{"name":"Impuesto incremento valor terrenos de naturaleza urbana","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Impuestos sobre las actividades económicas","children":[{"name":"Impuesto sobre actividades económicas","size":139000,"colname":"X3"},{"name":"Impuesto sobre actividades económicas","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Impuestos indirectos","children":[{"name":"Otros impuestos indirectos","children":[{"name":"Impuesto sobre construcciones, instalaciones y obras","size":220000,"colname":"X3"},{"name":"Impuesto sobre construcciones, instalaciones y obras","size":0,"colname":"X3"},{"name":"Otros impuestos indirectos","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Tasas, precios públicos y otros ingresos","children":[{"name":"Tasas por la prestación de servicios públicos básicos","children":[{"name":"Servicio de abastecimiento de agua","size":880000,"colname":"X3"},{"name":"Servicio de abastecimiento de agua","size":0,"colname":"X3"},{"name":"Servicio de alcantarillado","size":152000,"colname":"X3"},{"name":"Servicio de recogida de basura","size":700000,"colname":"X3"},{"name":"Servicio de tratamiento de residuos","size":100,"colname":"X3"},{"name":"Otras tasas por prestación de servicios básicos","size":69000,"colname":"X3"},{"name":"Otras tasas por prestación de servicios básicos","size":210000,"colname":"X3"},{"name":"Otras tasas por prestación de servicios básicos","size":20000,"colname":"X3"}],"colname":"X2"},{"name":"Tasas por la prestación de servicios públicos de carácter social preferente","children":[{"name":"Servicios asistenciales","size":25000,"colname":"X3"},{"name":"Servicios asistenciales","size":24000,"colname":"X3"},{"name":"Servicios asistenciales","size":12000,"colname":"X3"},{"name":"Servicios educativos","size":0,"colname":"X3"},{"name":"Servicios educativos","size":0,"colname":"X3"},{"name":"Servicios educativos","size":0,"colname":"X3"},{"name":"Servicios deportivos","size":0,"colname":"X3"},{"name":"Servicios deportivos","size":0,"colname":"X3"},{"name":"Servicios deportivos","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Tasas por la realización de actividades de competencia local","children":[{"name":"Licencias urbanísticas","size":22000,"colname":"X3"},{"name":"Cédulas de habitabilidad y licencias primera ocupación","size":5000,"colname":"X3"},{"name":"Tasa por expedición de documentos","size":800,"colname":"X3"},{"name":"Tasa por retirada de vehículos","size":0,"colname":"X3"},{"name":"Otras tasas por realización de actividades de competencia local","size":5000,"colname":"X3"},{"name":"Otras tasas por realización de actividades de competencia local","size":10000,"colname":"X3"},{"name":"Otras tasas por realización de actividades de competencia local","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Tasas por la utilización privativa del dominio público local","children":[{"name":"Tasa de entrada de vehículos","size":42000,"colname":"X3"},{"name":"Tasa de útilización privativa de empresas explotadoras de servicios de suministros","size":200000,"colname":"X3"},{"name":"Tasa de útilización privativa de empresas explotadoras de telecomunicaciones","size":5000,"colname":"X3"},{"name":"Tasa por apertura de calas y zanjas","size":0,"colname":"X3"},{"name":"Tasa por ocupación de la vía pública con terrazas","size":12000,"colname":"X3"},{"name":"Compensación de Teléfonica de España, S.A.","size":22000,"colname":"X3"},{"name":"Otras tasas por utilización privativa del dominio público","size":15000,"colname":"X3"},{"name":"Otras tasas por utilización privativa del dominio público","size":10000,"colname":"X3"},{"name":"Otras tasas por utilización privativa del dominio público","size":17000,"colname":"X3"},{"name":"Otras tasas por utilización privativa del dominio público","size":1500,"colname":"X3"},{"name":"Otras tasas por utilización privativa del dominio público","size":1500,"colname":"X3"}],"colname":"X2"},{"name":"Precios públicos","children":[{"name":"Precio público de servicios asistenciales","size":0,"colname":"X3"},{"name":"Precio público de servicios asistenciales","size":0,"colname":"X3"},{"name":"Precio público de servicios asistenciales","size":50000,"colname":"X3"},{"name":"Precio público de servicios educativos","size":500,"colname":"X3"},{"name":"Precio público de servicios educativos","size":40000,"colname":"X3"},{"name":"Precio público de servicios educativos","size":100000,"colname":"X3"},{"name":"Precio público de servicios educativos","size":10000,"colname":"X3"},{"name":"Precio público de servicios educativos","size":28000,"colname":"X3"},{"name":"Precio público de servicios deportivos","size":225000,"colname":"X3"},{"name":"Precio público de servicios deportivos","size":21000,"colname":"X3"},{"name":"Precio público de servicios deportivos","size":6000,"colname":"X3"},{"name":"Precio público de entrada a museos, exposiciones o espectáculos","size":110000,"colname":"X3"},{"name":"Otros precios públicos","size":18000,"colname":"X3"},{"name":"Otros precios públicos","size":11000,"colname":"X3"},{"name":"Otros precios públicos","size":0,"colname":"X3"},{"name":"Otros precios públicos","size":0,"colname":"X3"},{"name":"Otros precios públicos","size":2200,"colname":"X3"}],"colname":"X2"},{"name":"NA","children":[{"name":"NA","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Ventas","children":[{"name":"Ventas diversas","size":0,"colname":"X3"},{"name":"Ventas diversas","size":0,"colname":"X3"},{"name":"Ventas diversas","size":0,"colname":"X3"},{"name":"Ventas diversas","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Reintegros","children":[{"name":"Otros reintegros de operaciones corrientes","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Otros ingresos","children":[{"name":"Multas","size":4000,"colname":"X3"},{"name":"Multas","size":0,"colname":"X3"},{"name":"Multas","size":32000,"colname":"X3"},{"name":"Multas","size":500,"colname":"X3"},{"name":"Recargos del periodo ejecutivo y declaración extemporánea sin requerimiento previo","size":0,"colname":"X3"},{"name":"Recargos del periodo ejecutivo y declaración extemporánea sin requerimiento previo","size":1500,"colname":"X3"},{"name":"Recargos del periodo ejecutivo y declaración extemporánea sin requerimiento previo","size":0,"colname":"X3"},{"name":"Intereses de demora","size":28000,"colname":"X3"},{"name":"Ingresos diversos por actuaciones de urbanización","size":0,"colname":"X3"},{"name":"Ingresos diversos por actuaciones de urbanización","size":0,"colname":"X3"},{"name":"Aprovechamientos urbanísticos","size":0,"colname":"X3"},{"name":"Aprovechamientos urbanísticos","size":0,"colname":"X3"},{"name":"Indemnizaciones de seguros de no vida","size":1000,"colname":"X3"},{"name":"Otros ingresos diversos","size":40000,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Transferencias corrientes","children":[{"name":"Transferencias corrientes de la administración del Estado","children":[{"name":"Transferencias de la administración general del Estado","size":3063524.14,"colname":"X3"},{"name":"Transferencias de la administración general del Estado","size":207202.44,"colname":"X3"},{"name":"Transferencias de la administración general del Estado","size":0,"colname":"X3"},{"name":"Transferencias de la administración general del Estado","size":0,"colname":"X3"},{"name":"Transferencias de la administración general del Estado","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Transferencias corrientes de comunidades autónomas","children":[{"name":"Transferencias de la administración general de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":149920.18,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":272391.3,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":307008.51,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":90814.01,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":193791.43,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de la administración general de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de organismos autónomos y agencias de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de organismos autónomos y agencias de las comunidades autónomas","size":131461.18,"colname":"X3"},{"name":"Transferencias de organismos autónomos y agencias de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de organismos autónomos y agencias de las comunidades autónomas","size":0,"colname":"X3"},{"name":"Transferencias de organismos autónomos y agencias de las comunidades autónomas","size":0,"colname":"X3"}],"colname":"X2"},{"name":"NA","children":[{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"}],"colname":"X2"},{"name":"De empresas privadas","children":[{"name":"Transferencias de empresas privadas","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Ingresos patrimoniales","children":[{"name":"Intereses de depósitos","children":[{"name":"Intereses de depósitos","size":900,"colname":"X3"}],"colname":"X2"},{"name":"Rentas de bienes inmuebles","children":[{"name":"Arrendamientos de fincas urbanas","size":0,"colname":"X3"},{"name":"Arrendamientos de fincas urbanas","size":0,"colname":"X3"},{"name":"Arrendamientos de fincas rústicas","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Productos de concesiones y aprovechamientos especiales","children":[{"name":"Otras concesiones y aprovechamientos","size":20000,"colname":"X3"},{"name":"Otras concesiones y aprovechamientos","size":6500,"colname":"X3"},{"name":"Otras concesiones y aprovechamientos","size":0,"colname":"X3"},{"name":"Otras concesiones y aprovechamientos","size":12000,"colname":"X3"},{"name":"Otras concesiones y aprovechamientos","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Enajenación inversiones reales","children":[{"name":"Enajenación de terrenos","children":[{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"},{"name":"Patrimonio público del suelo","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Transferencias de capital","children":[{"name":"NA","children":[{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Transferencias de capital de comunidades autónomas","children":[{"name":"Trasferencias de capital de la administración general de la Comunidad Autónoma","size":0,"colname":"X3"},{"name":"Trasferencias de capital de la administración general de la Comunidad Autónoma","size":0,"colname":"X3"},{"name":"Trasferencias de capital de la administración general de la Comunidad Autónoma","size":0,"colname":"X3"},{"name":"Trasferencias de capital de la administración general de la Comunidad Autónoma","size":0,"colname":"X3"},{"name":"Trasferencias de capital de la administración general de la Comunidad Autónoma","size":0,"colname":"X3"},{"name":"Trasferencias de capital de la administración general de la Comunidad Autónoma","size":0,"colname":"X3"},{"name":"Trasferencias de capital de la administración general de la Comunidad Autónoma","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"}],"colname":"X2"},{"name":"Transferencias de capital de entidades locales","children":[{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"Transferencias de captial de Diputaciones, Consejos y Cabildos","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Activos financieros","children":[{"name":"Activos financieros","children":[{"name":"Reintegros de préstamos de fuera del sector público a corto plazo","size":0,"colname":"X3"},{"name":"Reintegros de préstamos de fuera del sector público a largo plazo","size":5000,"colname":"X3"}],"colname":"X2"},{"name":"NA","children":[{"name":"NA","size":0,"colname":"X3"},{"name":"NA","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Pasivos financieros","children":[{"name":"Préstamos recibidos en euros","children":[{"name":"NA","size":0,"colname":"X3"},{"name":"Préstamos a largo plazo de entes de fuera del sector público","size":0,"colname":"X3"},{"name":"Préstamos a largo plazo de entes de fuera del sector público","size":0,"colname":"X3"}],"colname":"X2"}],"colname":"X1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":false,"explanation":"function(d){return d.value.toLocaleString() + '€'}","breadcrumb":[],"legend":false,"sortFunction":null,"sumNodes":true}},"evals":["options.explanation"],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-6"><div class="card-body html-fill-item html-fill-container" data-title="Ingresos por Capítulos">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-73fb053584cdba5c025d" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-73fb053584cdba5c025d">{"x":{"visdat":{"5f6db6b839b1":["function () ","plotlyVisDat"]},"cur_data":"5f6db6b839b1","attrs":{"5f6db6b839b1":{"labels":{},"values":{},"textposition":"none","hoverinfo":"text+percent","text":{},"sort":true,"direction":"clockwise","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"legend":{"font":{"color":"steelblue"}},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Activos financieros","Enajenación inversiones reales","Impuestos directos","Impuestos indirectos","Ingresos patrimoniales","Pasivos financieros","Tasas, precios públicos y otros ingresos","Transferencias corrientes","Transferencias de capital"],"values":[5000,0,4317500,220000,39400,0,3189600,4416113.1900000004,0],"textposition":["none","none","none","none","none","none","none","none","none"],"hoverinfo":["text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent"],"text":["Activos financieros <\/br>Cantidad:      5.000 €","Enajenación inversiones reales <\/br>Cantidad:          0 €","Impuestos directos <\/br>Cantidad:  4.317.500 €","Impuestos indirectos <\/br>Cantidad:    220.000 €","Ingresos patrimoniales <\/br>Cantidad:     39.400 €","Pasivos financieros <\/br>Cantidad:          0 €","Tasas, precios públicos y otros ingresos <\/br>Cantidad:  3.189.600 €","Transferencias corrientes <\/br>Cantidad:  4.416.113 €","Transferencias de capital <\/br>Cantidad:          0 €"],"sort":true,"direction":"clockwise","type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-7"><div class="card-body html-fill-item html-fill-container" data-title="Ingresos por Artículos">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-b44735acc1c28bf29c92" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-b44735acc1c28bf29c92">{"x":{"visdat":{"5f6db22f71051":["function () ","plotlyVisDat"]},"cur_data":"5f6db22f71051","attrs":{"5f6db22f71051":{"labels":{},"values":{},"textposition":"none","hoverinfo":"text+percent","text":{},"sort":true,"direction":"clockwise","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"legend":{"font":{"color":"steelblue"}},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Activos financieros","De empresas privadas","Enajenación de terrenos","Impuestos sobre el capital","Impuestos sobre las actividades económicas","Intereses de depósitos","Otros impuestos indirectos","Otros ingresos","Precios públicos","Productos de concesiones y aprovechamientos especiales","Préstamos recibidos en euros","Reintegros","Rentas de bienes inmuebles","Tasas por la prestación de servicios públicos básicos","Tasas por la prestación de servicios públicos de carácter social preferente","Tasas por la realización de actividades de competencia local","Tasas por la utilización privativa del dominio público local","Transferencias corrientes de comunidades autónomas","Transferencias corrientes de la administración del Estado","Transferencias de capital de comunidades autónomas","Transferencias de capital de entidades locales","Ventas",null],"values":[5000,0,0,4178500,139000,900,220000,107000,621700,38500,0,0,0,2031100,61000,42800,326000,1145386.6099999999,3270726.5800000001,0,0,0,0],"textposition":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"hoverinfo":["text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent"],"text":["Activos financieros <\/br>Cantidad:      5.000 €","De empresas privadas <\/br>Cantidad:          0 €","Enajenación de terrenos <\/br>Cantidad:          0 €","Impuestos sobre el capital <\/br>Cantidad:  4.178.500 €","Impuestos sobre las actividades económicas <\/br>Cantidad:    139.000 €","Intereses de depósitos <\/br>Cantidad:        900 €","Otros impuestos indirectos <\/br>Cantidad:    220.000 €","Otros ingresos <\/br>Cantidad:    107.000 €","Precios públicos <\/br>Cantidad:    621.700 €","Productos de concesiones y aprovechamientos especiales <\/br>Cantidad:     38.500 €","Préstamos recibidos en euros <\/br>Cantidad:          0 €","Reintegros <\/br>Cantidad:          0 €","Rentas de bienes inmuebles <\/br>Cantidad:          0 €","Tasas por la prestación de servicios públicos básicos <\/br>Cantidad:  2.031.100 €","Tasas por la prestación de servicios públicos de carácter social preferente <\/br>Cantidad:     61.000 €","Tasas por la realización de actividades de competencia local <\/br>Cantidad:     42.800 €","Tasas por la utilización privativa del dominio público local <\/br>Cantidad:    326.000 €","Transferencias corrientes de comunidades autónomas <\/br>Cantidad:  1.145.387 €","Transferencias corrientes de la administración del Estado <\/br>Cantidad:  3.270.727 €","Transferencias de capital de comunidades autónomas <\/br>Cantidad:          0 €","Transferencias de capital de entidades locales <\/br>Cantidad:          0 €","Ventas <\/br>Cantidad:          0 €","NA <\/br>Cantidad:          0 €"],"sort":true,"direction":"clockwise","type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-8"><div class="card-body html-fill-item html-fill-container" data-title="Ingresos por Conceptos">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-7388997018f6a5b58ee6" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-7388997018f6a5b58ee6">{"x":{"visdat":{"5f6dbbb9117c":["function () ","plotlyVisDat"]},"cur_data":"5f6dbbb9117c","attrs":{"5f6dbbb9117c":{"labels":{},"values":{},"textposition":"none","hoverinfo":"text+percent","text":{},"sort":true,"direction":"clockwise","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"legend":{"font":{"color":"steelblue"}},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Aprovechamientos urbanísticos","Arrendamientos de fincas rústicas","Arrendamientos de fincas urbanas","Compensación de Teléfonica de España, S.A.","Cédulas de habitabilidad y licencias primera ocupación","IBI naturaleza rústica","IBI naturaleza urbana","Impuesto incremento valor terrenos de naturaleza urbana","Impuesto sobre actividades económicas","Impuesto sobre construcciones, instalaciones y obras","Impuesto sobre vehículos de tracción mecánica","Indemnizaciones de seguros de no vida","Ingresos diversos por actuaciones de urbanización","Intereses de demora","Intereses de depósitos","Licencias urbanísticas","Multas","Otras concesiones y aprovechamientos","Otras tasas por prestación de servicios básicos","Otras tasas por realización de actividades de competencia local","Otras tasas por utilización privativa del dominio público","Otros impuestos indirectos","Otros ingresos diversos","Otros precios públicos","Otros reintegros de operaciones corrientes","Patrimonio público del suelo","Precio público de entrada a museos, exposiciones o espectáculos","Precio público de servicios asistenciales","Precio público de servicios deportivos","Precio público de servicios educativos","Préstamos a largo plazo de entes de fuera del sector público","Recargos del periodo ejecutivo y declaración extemporánea sin requerimiento previo","Reintegros de préstamos de fuera del sector público a corto plazo","Reintegros de préstamos de fuera del sector público a largo plazo","Servicio de abastecimiento de agua","Servicio de alcantarillado","Servicio de recogida de basura","Servicio de tratamiento de residuos","Servicios asistenciales","Servicios deportivos","Servicios educativos","Tasa de entrada de vehículos","Tasa de útilización privativa de empresas explotadoras de servicios de suministros","Tasa de útilización privativa de empresas explotadoras de telecomunicaciones","Tasa por apertura de calas y zanjas","Tasa por expedición de documentos","Tasa por ocupación de la vía pública con terrazas","Tasa por retirada de vehículos","Transferencias de captial de Diputaciones, Consejos y Cabildos","Transferencias de empresas privadas","Transferencias de la administración general de las comunidades autónomas","Transferencias de la administración general del Estado","Transferencias de organismos autónomos y agencias de las comunidades autónomas","Trasferencias de capital de la administración general de la Comunidad Autónoma","Ventas diversas",null],"values":[0,0,0,22000,5000,217000,3081000,30000,139000,220000,850000,1000,0,28000,900,22000,36500,38500,299000,15000,45000,0,40000,31200,0,0,110000,50000,252000,178500,0,1500,0,5000,880000,152000,700000,100,61000,0,0,42000,200000,5000,0,800,12000,0,0,0,1013925.4299999999,3270726.5800000001,131461.17999999999,0,0,500],"textposition":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"hoverinfo":["text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent","text+percent"],"text":["Aprovechamientos urbanísticos <\/br>Cantidad:          0,0 €","Arrendamientos de fincas rústicas <\/br>Cantidad:          0,0 €","Arrendamientos de fincas urbanas <\/br>Cantidad:          0,0 €","Compensación de Teléfonica de España, S.A. <\/br>Cantidad:     22.000,0 €","Cédulas de habitabilidad y licencias primera ocupación <\/br>Cantidad:      5.000,0 €","IBI naturaleza rústica <\/br>Cantidad:    217.000,0 €","IBI naturaleza urbana <\/br>Cantidad:  3.081.000,0 €","Impuesto incremento valor terrenos de naturaleza urbana <\/br>Cantidad:     30.000,0 €","Impuesto sobre actividades económicas <\/br>Cantidad:    139.000,0 €","Impuesto sobre construcciones, instalaciones y obras <\/br>Cantidad:    220.000,0 €","Impuesto sobre vehículos de tracción mecánica <\/br>Cantidad:    850.000,0 €","Indemnizaciones de seguros de no vida <\/br>Cantidad:      1.000,0 €","Ingresos diversos por actuaciones de urbanización <\/br>Cantidad:          0,0 €","Intereses de demora <\/br>Cantidad:     28.000,0 €","Intereses de depósitos <\/br>Cantidad:        900,0 €","Licencias urbanísticas <\/br>Cantidad:     22.000,0 €","Multas <\/br>Cantidad:     36.500,0 €","Otras concesiones y aprovechamientos <\/br>Cantidad:     38.500,0 €","Otras tasas por prestación de servicios básicos <\/br>Cantidad:    299.000,0 €","Otras tasas por realización de actividades de competencia local <\/br>Cantidad:     15.000,0 €","Otras tasas por utilización privativa del dominio público <\/br>Cantidad:     45.000,0 €","Otros impuestos indirectos <\/br>Cantidad:          0,0 €","Otros ingresos diversos <\/br>Cantidad:     40.000,0 €","Otros precios públicos <\/br>Cantidad:     31.200,0 €","Otros reintegros de operaciones corrientes <\/br>Cantidad:          0,0 €","Patrimonio público del suelo <\/br>Cantidad:          0,0 €","Precio público de entrada a museos, exposiciones o espectáculos <\/br>Cantidad:    110.000,0 €","Precio público de servicios asistenciales <\/br>Cantidad:     50.000,0 €","Precio público de servicios deportivos <\/br>Cantidad:    252.000,0 €","Precio público de servicios educativos <\/br>Cantidad:    178.500,0 €","Préstamos a largo plazo de entes de fuera del sector público <\/br>Cantidad:          0,0 €","Recargos del periodo ejecutivo y declaración extemporánea sin requerimiento previo <\/br>Cantidad:      1.500,0 €","Reintegros de préstamos de fuera del sector público a corto plazo <\/br>Cantidad:          0,0 €","Reintegros de préstamos de fuera del sector público a largo plazo <\/br>Cantidad:      5.000,0 €","Servicio de abastecimiento de agua <\/br>Cantidad:    880.000,0 €","Servicio de alcantarillado <\/br>Cantidad:    152.000,0 €","Servicio de recogida de basura <\/br>Cantidad:    700.000,0 €","Servicio de tratamiento de residuos <\/br>Cantidad:        100,0 €","Servicios asistenciales <\/br>Cantidad:     61.000,0 €","Servicios deportivos <\/br>Cantidad:          0,0 €","Servicios educativos <\/br>Cantidad:          0,0 €","Tasa de entrada de vehículos <\/br>Cantidad:     42.000,0 €","Tasa de útilización privativa de empresas explotadoras de servicios de suministros <\/br>Cantidad:    200.000,0 €","Tasa de útilización privativa de empresas explotadoras de telecomunicaciones <\/br>Cantidad:      5.000,0 €","Tasa por apertura de calas y zanjas <\/br>Cantidad:          0,0 €","Tasa por expedición de documentos <\/br>Cantidad:        800,0 €","Tasa por ocupación de la vía pública con terrazas <\/br>Cantidad:     12.000,0 €","Tasa por retirada de vehículos <\/br>Cantidad:          0,0 €","Transferencias de captial de Diputaciones, Consejos y Cabildos <\/br>Cantidad:          0,0 €","Transferencias de empresas privadas <\/br>Cantidad:          0,0 €","Transferencias de la administración general de las comunidades autónomas <\/br>Cantidad:  1.013.925,4 €","Transferencias de la administración general del Estado <\/br>Cantidad:  3.270.726,6 €","Transferencias de organismos autónomos y agencias de las comunidades autónomas <\/br>Cantidad:    131.461,2 €","Trasferencias de capital de la administración general de la Comunidad Autónoma <\/br>Cantidad:          0,0 €","Ventas diversas <\/br>Cantidad:          0,0 €","NA <\/br>Cantidad:        500,0 €"],"sort":true,"direction":"clockwise","type":"pie","marker":{"color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-9"><div class="card-body html-fill-item html-fill-container" data-title="Variación Ingresos Conceptos">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-4a09b13499ecfd0a7e20" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-4a09b13499ecfd0a7e20">{"x":{"visdat":{"5f6db6f919d12":["function () ","plotlyVisDat"]},"cur_data":"5f6db6f919d12","attrs":{"5f6db6f919d12":{"y":{},"x":{},"orientation":"h","hoverinfo":"text","hovertext":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"categoryorder":"total descending","tickfont":{"color":"steelblue"},"titlefont":{"color":"steelblue"},"title":{"color":"steelblue"},"type":"category","categoryarray":["IBI naturaleza urbana","Impuesto incremento valor terrenos de naturaleza urbana","Impuesto sobre construcciones, instalaciones y obras","Multas","Otras concesiones y aprovechamientos","Otras tasas por utilización privativa del dominio público","Otros ingresos diversos","Precio público de entrada a museos, exposiciones o espectáculos","Precio público de servicios asistenciales","Precio público de servicios deportivos","Precio público de servicios educativos","Servicio de recogida de basura","Servicios asistenciales","Tasa de útilización privativa de empresas explotadoras de servicios de suministros","Transferencias de la administración general del Estado"]},"showlegend":false,"xaxis":{"domain":[0,1],"automargin":true,"showgrid":true,"zeroline":true,"nticks":20,"showline":false,"title":"Variación con respecto al año anterior","titlefont":{"color":"steelblue"},"tickprefix":"€","tickformat":",.2r","hoverformat":".2f","tickfont":{"color":"steelblue"}},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":["Impuesto incremento valor terrenos de naturaleza urbana","Impuesto sobre construcciones, instalaciones y obras","Multas","Otras concesiones y aprovechamientos","Otras tasas por utilización privativa del dominio público","Precio público de entrada a museos, exposiciones o espectáculos","Precio público de servicios asistenciales","Precio público de servicios educativos","Servicios asistenciales","Tasa de útilización privativa de empresas explotadoras de servicios de suministros"],"x":[-20000,-30000,-13500,-39500,-11500,-65000,-10000,-12500,-11000,-25000],"orientation":"h","hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"hovertext":["Concepto:  Impuesto incremento valor terrenos de naturaleza urbana <br>Variación:  -20.000,00 €  ( -40,00 %)","Concepto:  Impuesto sobre construcciones, instalaciones y obras <br>Variación:  -30.000,00 €  ( -12,00 %)","Concepto:  Multas <br>Variación:  -13.500,00 €  ( -27,00 %)","Concepto:  Otras concesiones y aprovechamientos <br>Variación:  -39.500,00 €  ( -50,64 %)","Concepto:  Otras tasas por utilización privativa del dominio público <br>Variación:  -11.500,00 €  ( -20,35 %)","Concepto:  Precio público de entrada a museos, exposiciones o espectáculos <br>Variación:  -65.000,00 €  ( -37,14 %)","Concepto:  Precio público de servicios asistenciales <br>Variación:  -10.000,00 €  ( -16,67 %)","Concepto:  Precio público de servicios educativos <br>Variación:  -12.500,00 €  (  -6,54 %)","Concepto:  Servicios asistenciales <br>Variación:  -11.000,00 €  ( -15,28 %)","Concepto:  Tasa de útilización privativa de empresas explotadoras de servicios de suministros <br>Variación:  -25.000,00 €  ( -11,11 %)"],"type":"bar","name":"FALSE","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":["IBI naturaleza urbana","Otros ingresos diversos","Precio público de servicios deportivos","Servicio de recogida de basura","Transferencias de la administración general del Estado"],"x":[281000,20000,67500,130000,67411.080000000075],"orientation":"h","hoverinfo":["text","text","text","text","text"],"hovertext":["Concepto:  IBI naturaleza urbana <br>Variación:  281.000,00 €  (  10,04 %)","Concepto:  Otros ingresos diversos <br>Variación:   20.000,00 €  ( 100,00 %)","Concepto:  Precio público de servicios deportivos <br>Variación:   67.500,00 €  (  36,59 %)","Concepto:  Servicio de recogida de basura <br>Variación:  130.000,00 €  (  22,81 %)","Concepto:  Transferencias de la administración general del Estado <br>Variación:   67.411,08 €  (   2,10 %)"],"type":"bar","name":"TRUE","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-5-10"><div class="card-body html-fill-item html-fill-container" data-title="Inversiones">
+<div class="h4">
+Total
+
+inversiones:
+
+105.727,1
+
+€.
+</div>
+<a href="doc/2024/presupuesto-inversiones-2024.pdf">Presupuesto de inversiones de 2024</a>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-0427e535d573e3db00e3" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-0427e535d573e3db00e3">{"x":{"visdat":{"5f6db3f4db7b3":["function () ","plotlyVisDat"]},"cur_data":"5f6db3f4db7b3","attrs":{"5f6db3f4db7b3":{"y":{},"x":{},"orientation":"h","hoverinfo":"text","hovertext":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"categoryorder":"total descending","tickfont":{"color":"steelblue"},"titlefont":{"color":"steelblue"},"title":{"color":"steelblue"},"type":"category","categoryarray":["ALUMBRADO CAMINO DEL CRISTO DE VILLAJOS","CLIMATIZACIÓN","ELIMINACIÓN ANTENAS TELEVISION BARRIO ALBAICÍN","EQUIPOS INFORMATICOS","INVERSIONES DE CARÁCTER INMATERIAL","MEJORA TEATRO","SITIOS DEL CEMENTERIO"]},"showlegend":false,"xaxis":{"domain":[0,1],"automargin":true,"showgrid":true,"zeroline":true,"nticks":20,"showline":false,"tickprefix":"€","tickformat":",.2r","hoverformat":".2f","tickfont":{"color":"steelblue"},"title":"Cantidad"},"plot_bgcolor":"transparent","paper_bgcolor":"transparent","hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":["SITIOS DEL CEMENTERIO","ELIMINACIÓN ANTENAS TELEVISION BARRIO ALBAICÍN","EQUIPOS INFORMATICOS","INVERSIONES DE CARÁCTER INMATERIAL","CLIMATIZACIÓN","ALUMBRADO CAMINO DEL CRISTO DE VILLAJOS","MEJORA TEATRO"],"x":[20000,50000,8000,1276.1500000000001,1800,15651,9000],"orientation":"h","hoverinfo":["text","text","text","text","text","text","text"],"hovertext":["Inversión:  SITIOS DEL CEMENTERIO <br>Cantidad:  20.000,00 €  ( 18,92 %)","Inversión:  ELIMINACIÓN ANTENAS TELEVISION BARRIO ALBAICÍN <br>Cantidad:  50.000,00 €  ( 47,29 %)","Inversión:  EQUIPOS INFORMATICOS <br>Cantidad:   8.000,00 €  (  7,57 %)","Inversión:  INVERSIONES DE CARÁCTER INMATERIAL <br>Cantidad:   1.276,15 €  (  1,21 %)","Inversión:  CLIMATIZACIÓN <br>Cantidad:   1.800,00 €  (  1,70 %)","Inversión:  ALUMBRADO CAMINO DEL CRISTO DE VILLAJOS <br>Cantidad:  15.651,00 €  ( 14,80 %)","Inversión:  MEJORA TEATRO <br>Cantidad:   9.000,00 €  (  8,51 %)"],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>

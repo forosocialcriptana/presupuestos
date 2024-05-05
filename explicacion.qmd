@@ -1,0 +1,144 @@
+--- 
+title: "Explicación de los presupuestos municipales"
+format: html
+lang: es
+---
+
+# Explicación
+
+<h2>¿Qué es el presupuesto?</h2>
+
+El presupuesto de gastos de una Entidad local es la autorización que hace el Pleno para que el gobierno de la Entidad pueda gastar. Esta autorización se refiere a un periodo de tiempo de un año.
+
+Establece:
+
+- Cantidad máxima de gasto
+- En qué gastar
+- Forma de financiar el gasto (ingresos)
+
+Cualquier cambio en la cantidad o la finalidad de los gastos presupuestados debe tramitarse mediante  una modificación de crédito.
+
+:::{.callout-important}
+Las modificaciones de crédito son bastante habituales, por lo que es mejor analizar las liquidaciones del presupuesto al final del ejercicio. 
+:::
+
+<h2>Fases presupuestarias</h2>
+
+1. Elaboración del presupuesto. Secretaría de Hacienda.
+2. Aprobación del presupuesto por el Pleno de la Entidad local.
+3. Ejecución del presupuesto por los órganos de gobierno de la Entidad local.
+4. Verificación por el Pleno de la Entidad local de cómo se ha ajustado la ejecución del presupuesto al mandato inicialmente aprobado. Control financiero.
+
+El Estado de liquidación del presupuesto recoge información sobre el presupuesto que aprobó el Pleno de la Entidad local y cómo se ha ejecutado. Por tanto, es el documento más adecuado para conocer la gestión de los ingresos y gastos que se ha realizado durante el año.
+
+<h2>Estructura de los presupuestos</h2>
+
+Se define en la [Orden EHA/3565/2008](http://www.boe.es/buscar/doc.php?id=BOE-A-2008-19916), de 3 de diciembre.
+
+Estable una separación entre:
+
+- **Ingresos**: Recoge la previsión de los recursos que la entidad espera obtener en el año para financiar los gastos que figuran en el presupuesto de gastos.
+- **Gastos**: Recoge los gastos que se pretenden acometer durante el ejercicio. 
+
+Los gastos no pueden ser nunca superiores a los ingresos.
+
+<h2>Clasificación de los ingresos</h2>
+
+El estado de ingresos se realiza de acuerdo a dos clasificaciones diferentes:
+
+- **Económica**: Presenta la información atendiendo a la naturaleza económica de los derechos presupuestarios. Está definida por el Ministerio de Economía y Hacienda.
+- **Orgánica**: Informa sobre quién ingresa. Las Entidades locales podrán clasificar los ingresos atendiendo a su propia estructura. 
+
+<h2>Clasificación económica de los ingresos</h2>
+
+Se distingue entre:
+
+- Operaciones no financieras:
+  - Operaciones corrientes: Ingresos habituales (impuestos y tasas).
+  - Operaciones de capital: Ingresos de la venta de capital o provenientes de fondos para la construcción de infraestructuras o compra de bienes inventariables.
+- Operaciones financieras: Ingresos en la recuperación de depósitos inmovilizados o de créditos. 
+
+Utiliza las siguientes divisiones:
+
+<center>
+**Capítulo > Artículo > Concepto > Subconcepto**
+</center>
+<br/>
+
+**Capítulo 1. Impuestos directos**:
+
+- 1.1 IRPF (cesión porcentual del Estado).
+- 1.2 IBI.
+- 1.3 Impuesto sobre vehículos de tracción mecánica.
+- 1.4 Impuesto sobre el incremento de valor de los terrenos (plusvalía).
+- 1.5 Impuesto de actividades económicas.
+
+**Capítulo 2. Impuestos indirectos**:
+
+-  2.1 IVA (cesión porcentual del Estado).
+-  2.2 Impuestos especiales sobre alcohol, tabaco e hidrocarburos (cesión porcentual del Estado).
+-  2.3 Impuesto sobre construcciones, instalaciones y obras.
+
+**Capítulo 3. Tasas y otros ingresos**: Tasas, precios públicos y contribuciones especiales que pagan los usuarios por la realización de una contraprestación municipal.  
+**Capítulo 4. Transferencias corrientes**: Ingresos de naturaleza no tributaria destinados a gastos corrientes (transferencias del Estado y de la Comunidad Autónoma).  
+**Capítulo 5. Ingresos patrimoniales**: Rentas de patrimonio del Municipio.  
+**Capítulo 6. Enajenación de inversiones reales**: Venta de solares y fincas rústicas.  
+**Capítulo 7. Transferencias de capital**: Ingresos de naturaleza no tributaria destinados a financiar gastos de capital (fondos de la UE).  
+**Capítulo 8. Activos financieros**: Devolución de fianzas o depósitos inmovilizados.  
+**Capítulo 9. Pasivos financieros**: Créditos solicitados a entidades privadas.
+
+**Ejemplo**  
+![Ejemplo presupuesto ingresos](doc/img/ejemplo-ingresos.png)
+
+<h2>Clasificación de los gastos</h2>
+
+El estado de gastos ordena los créditos de acuerdo con tres clasificaciones diferentes:
+
+- **Por programas**: Informa sobre en qué se gasta, es decir, la finalidad del gasto.
+- **Económica**: Informa sobre cómo se gasta, sobre la naturaleza económica del gasto.
+- **Orgánica***: Informa sobre quién realiza el gasto.
+
+<h2>Clasificación por programas de gasto</h2>
+
+Utiliza las siguientes divisiones:
+
+<center>
+**Área > Política > Grupo > Programa**
+</center>
+<br/>
+
+**Área 0. Deuda pública**: Intereses y amortización de la Deuda Pública y demás operaciones financieras de naturaleza análoga, con exclusión de los gastos que ocasione la formalización de las mismas.  
+**Área 1. Servicios públicos básicos**: Servicios públicos básicos que, con carácter obligatorio, deben prestar los Municipios. Incluyen cuatro políticas de gasto básicas: seguridad y movilidad ciudadana, vivienda y urbanismo, bienestar comunitario y medio ambiente.   
+**Área 2. Actuaciones de protección y promoción social**: Actuaciones de protección y promoción social (pensiones de funcionarios, atenciones de carácter benéfico-asistencial, atenciones a grupos con necesidades especiales, como jóvenes, mayores, minusválidos físicos y tercera edad y medidas de fomento del empleo).  
+**Área 3. Producción de bienes públicos de carácter preferente**: Sanidad, educación, cultura, ocio, deporte, y, en general, todos aquellos tendentes a la elevación o mejora de la calidad de vida.  
+**Área 4. Actuaciones de carácter económico**: Actividades, servicios y transferencias para desarrollar el potencial de los distintos sectores de la actividad económica (infraestructuras básicas y de transportes, infraestructuras agrarias, comunicaciones, investigación, desarrollo e innovación).  
+**Área  9. Actuaciones de carácter general**: Actividades que afecten, con carácter general, a la Entidad local, y que consistan en el ejercicio de funciones de gobierno o de apoyo administrativo y de soporte lógico y técnico a toda la organización. También los  gastos que no puedan ser imputados a otras áreas.
+
+<h2>Clasificación económica de los gastos</h2>
+
+Se distingue entre:
+
+- Operaciones no financieras:
+  - Operaciones corrientes: Gastos habituales necesarios para el funcionamiento de los servicios públicos (gastos en personal, bienes y servicios).
+  - Operaciones de capital: Gastos extraordinarios en inversiones reales o su financiación (creación de infraestructuras y adquisición de bienes de carácter inventariable).
+- Operaciones financieras: Gastos en la adquisición de activos financieros o para la amortización de los préstamos.
+
+Utiliza las siguientes divisiones:
+
+<center>
+**Capítulo > Artículo > Concepto > Subconcepto**
+</center>
+<br/>
+
+**Capítulo 1. Gastos de personal**: Retribuciones, indemnizaciones, cotizaciones y planes de pensiones para todo el personal contratado.  
+**Capítulo 2. Gastos corrientes y servicios**: Suministros, materiales y gastos de servicios o trabajos realizados por empresas ajenas contratadas.  
+**Capítulo 3. Intereses**: Pago  de intereses derivados de operaciones financieras.  
+**Capítulo 4. Transferencias corrientes**: Aportaciones a otras entidades o administraciones (estatales, autonómicas o empresas privadas) para financiar operaciones corrientes.  
+**Capítulo 6. Inversiones reales**: Creación de nuevos equipamientos o infraestructuras y adquisición de bienes inventariables.  
+**Capítulo 7. Transferencias de capital**: Pago de créditos para financiar operaciones de capital, que hayan financiado inversiones reales.  
+**Capítulo 8. Activos financieros**: Adquisición de activos financieros para la constitución de depósitos y fianzas exigidos.  
+**Capítulo 9. Pasivos financieros**: Pago de amortización de pasivos financieros (deuda).
+
+**Ejemplo**  
+![Ejemplo presupuesto gastos](doc/img/ejemplo-gastos.png)
+

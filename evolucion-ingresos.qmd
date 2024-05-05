@@ -1,0 +1,67 @@
+--- 
+title: "Evolución de los Ingresos"
+format: dashboard
+lang: es
+---
+
+```{r setup, include=FALSE}
+source("carga-ingresos.R")
+library(plotly)
+```
+
+## Row {height=50%}
+
+```{r evolucion-ingresos}
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos |> 
+  group_by(Año) |> 
+  summarise(Cantidad=sum(Cantidad)) |> 
+  plot_ly(x = ~Año, y=~Cantidad, type = "bar", hoverinfo = 'text', text = ~paste('Año:', Año, '<br>Cantidad:', format(Cantidad, decimal.mark=",", big.mark="."), "€")) |>
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+## Row {.tabset}
+
+```{r evolucion-ingresos-capitulos}
+#| title: Por Capítulos
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos |> 
+  group_by(Capítulo, Año) |> 
+  summarise(Cantidad=sum(Cantidad)) |>
+  plot_ly(x=~Año, y=~Cantidad, color=~Capítulo) |>
+  add_lines(hoverinfo = 'text', text = ~paste('Capítulo: ', Capítulo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) |>
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+
+```{r evolucion-ingresos-articulos}
+#| title: Por Artículos
+ingresos.años.articulos <- ingresos |> group_by(Año, Artículo) |> summarise(Cantidad=sum(Cantidad))
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos |> 
+  group_by(Artículo, Año) |> 
+  summarise(Cantidad=sum(Cantidad)) |>
+  plot_ly(x=~Año, y=~Cantidad, color=~Artículo) |>
+  add_lines(hoverinfo = 'text', text = ~paste('Artículo: ', Artículo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) |>
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+```{r evolucion-ingresos-conceptos}
+#| title: Por Conceptos
+ingresos.años.concepto <- ingresos |> group_by(Año, Concepto) |> summarise(Cantidad=sum(Cantidad))
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- ingresos |> 
+  group_by(Concepto, Año) |> 
+  summarise(Cantidad=sum(Cantidad)) |>
+  plot_ly(x=~Año, y=~Cantidad, color=~Concepto) |>
+  add_lines(hoverinfo = 'text', text = ~paste('Concepto: ', Concepto, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) |>
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```

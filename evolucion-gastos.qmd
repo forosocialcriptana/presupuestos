@@ -1,0 +1,76 @@
+--- 
+title: "Evolución de los Gastos"
+format: 
+    dashboard:
+        scrolling: true
+lang: es
+---
+
+```{r setup, include=FALSE}
+source("carga-gastos.R")
+library(plotly)
+```
+
+## Row {height=50%}
+
+```{r evolucion-gastos}
+gastos.años <- gastos |> group_by(Año) |> summarise(Cantidad=sum(Cantidad))
+gastos.años <- left_join(gastos.años, censo, by=c("Año"="Año"))
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- plot_ly(gastos.años, x = ~Año, y=~Cantidad, type = "bar", hoverinfo = 'text', 
+             text = ~paste('Año: ', Año, '<br>Cantidad: ', format(Cantidad,decimal.mark=",", big.mark="."), "€<br>Coste por persona: ", 
+                           format(Cantidad/Población, decimal.mark=",", big.mark="."), "€")) |> 
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+## Row {.tabset}
+
+```{r}
+# 10 mayores programas
+gastos.programas.mayores <- gastos.programas |> group_by(Programa) |> summarize(Cantidad=sum(Cantidad)) |> top_n(15) |> arrange(desc(Cantidad))
+programas.mayores <- unique(gastos.programas.mayores$Programa)
+```
+
+```{r evolucion-gastos-programas}
+#| title: Por Programa
+gastos.años.programas <- gastos.programas |> group_by(Año, Programa) |> summarise(Cantidad=sum(Cantidad))
+xaxis <- list(showgrid=F, zeroline=T, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- gastos.programas |> 
+  filter(Programa %in% programas.mayores) |>
+  group_by(Programa, Año) |> 
+  summarise(Cantidad=sum(Cantidad)) |>
+  # group_by(Programa) |>
+  plot_ly(x=~Año, y=~Cantidad, color=~Programa) |> 
+  add_lines(hoverinfo = 'text', text = ~paste('Programa: ', Programa, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) |> 
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+```{r evolucion-gastos-capitulos}
+#| title: Por Capítulo
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- gastos |> 
+  group_by(Capítulo, Año) |> 
+  summarise(Cantidad=sum(Cantidad)) |>
+  plot_ly(x=~Año, y=~Cantidad, color=~Capítulo) |>
+  add_lines(hoverinfo = 'text', text = ~paste('Capítulo: ', Capítulo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) |>
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```
+
+```{r evolucion-gastos-articulos}
+#| title: Por Artículo
+xaxis <- list(showgrid=F, zeroline=T, showline=F, title="Años")
+yaxis <- list(showgrid=T, zeroline=T, nticks=20, showline=F, rangemode = "tozero", title="Cantidad", tickprefix = '€', tickformat=",.2r")
+p <- gastos |> 
+  group_by(Artículo, Año) |> 
+  summarise(Cantidad=sum(Cantidad)) |>
+  plot_ly(x=~Año, y=~Cantidad, color=~Artículo) |>
+  add_lines(hoverinfo = 'text', text = ~paste('Artículo: ', Artículo, '<br>Año: ', Año, '<br>Cantidad: ', format(Cantidad, decimal.mark=",", big.mark="."), "€")) |>
+  layout(xaxis=xaxis, yaxis=yaxis)
+p
+```

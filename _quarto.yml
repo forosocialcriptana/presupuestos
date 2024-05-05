@@ -1,0 +1,87 @@
+project:
+  title: Presupuestos municipales de Campo de Criptana
+  type: website
+  output-dir: docs
+  preview:
+    port: 1313
+    browser: false
+  execute-dir: project
+
+execute: 
+  cache: true
+  freeze: auto
+
+website:
+  title: Presupuestos municipales de Campo de Criptana
+  favicon: img/favicon.ico
+  navbar:
+    logo: img/logo-cuadrado.png
+    left:
+      - text: Inicio
+        file: index.qmd
+      - text: Explicación
+        file: explicacion.qmd
+      - sidebar:evolucion
+      - sidebar:años
+    right:
+      - text: GitHub
+        href: https://github.com/forosocialcriptana/presupuestos
+
+  sidebar:
+    - id: evolucion
+      title: Evolución
+      style: docked
+      contents:
+        - text: Ingresos
+          file: evolucion-ingresos.qmd
+        - text: Gastos
+          file: evolucion-gastos.qmd
+    - id: años
+      title: Años
+      style: docked
+      contents:
+        - text: "2024"
+          file: presupuestos-2024.qmd
+        - text: "2023"
+          file: presupuestos-2023.qmd
+        - text: "2022"
+          file: presupuestos-2022.qmd
+        - text: "2021"
+          file: presupuestos-2021.qmd
+        - text: "2020"
+          file: presupuestos-2020.qmd
+        - text: "2019"
+          file: presupuestos-2019.qmd
+        - text: "2018"
+          file: presupuestos-2018.qmd
+        - text: "2017"
+          file: presupuestos-2017.qmd
+        - text: "2016"
+          file: presupuestos-2016.qmd
+        - text: "2015"
+          file: presupuestos-2015.qmd
+        - text: "2014"
+          file: presupuestos-2014.qmd
+        - text: "2013"
+          file: presupuestos-2013.qmd
+        - text: "2012"
+          file: presupuestos-2012.qmd
+        - text: "2011"
+          file: presupuestos-2011.qmd
+        - text: "2010"
+          file: presupuestos-2010.qmd
+
+format:
+  html:
+    theme:
+      dark: [darkly, theme/custom.scss]
+      light: [flatly, theme/custom.scss]
+    default-image-extension: svg
+  dashboard: 
+    theme:
+      dark: [darkly, theme/custom-dark.scss]
+      light: [flatly, theme/custom-light.scss]
+
+
+
+

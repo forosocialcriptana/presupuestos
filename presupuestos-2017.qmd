@@ -1,0 +1,135 @@
+--- 
+title: Presupuestos `r params$año`
+format: dashboard
+lang: es
+params: 
+    año: 2017
+---
+
+```{r setup, include=FALSE}
+source("carga-gastos.R")
+source("carga-ingresos.R")
+source("carga-funciones.R")
+```
+
+```{r}
+año <- params$año
+```
+
+## Row
+
+```{r}
+#| content: valuebox
+#| title: Año
+#| icon: calendar-fill
+#| color: primary
+list(año)
+```
+
+```{r}
+#| content: valuebox
+#| title: Presupuesto Total
+#| icon: bank2
+#| color: primary
+list(gasto.total(gastos, año))
+```
+
+```{r}
+#| content: valuebox
+#| title: Presupuesto por habitante
+#| icon: person
+#| color: primary
+list(gasto.habitante(censo, gastos, año))
+```
+
+```{r}
+#| content: valuebox
+#| title: Inversiones
+#| icon: buildings
+#| color: primary
+list(paste(format(sum(inversiones[inversiones$Año == año, ]$Cantidad), decimal.mark=",", big.mark="."), "€"))
+```
+
+## Row {.tabset}
+
+:::{.card title="Gastos"}
+[Presupuesto de Gastos de `r año` íntegro](doc/`r año`/presupuesto-gastos-`r año`.pdf)
+
+```{r gastos-económica}
+gastos |>
+  filter(Año==año) |> 
+  group_by(Capítulo, Artículo) |> 
+  summarise(Cantidad=sum(Cantidad)) |>
+  unite(Categoría, Capítulo, Artículo, sep='-') |>
+  select(Categoría, Cantidad) |>
+  sunburst(legend=F, explanation = "function(d){return d.value.toLocaleString() + '€'}")
+```
+:::
+
+:::{.card title="Gastos por Programas"}
+Hacer clic en cada programa de la leyenda para activarlo o desactivarlo.
+Desplazar la leyenda para ver el resto de programas.
+
+```{r gastos-programas}
+plot.gastos.programas(gastos.programas, año)
+```
+:::
+
+:::{.card title="Gastos por Capítulos"}
+```{r gastos-capitulos}
+plot.gastos.capitulos(gastos, año)
+```
+:::
+
+:::{.card title="Variación Gastos Programas"}
+```{r variacion-gastos-programas}
+plot.variacion.gastos.programas(gastos.programas, año)
+```
+:::
+
+:::{.card title="Ingresos"}
+[Presupuesto de Ingresos de `r año` íntegro](doc/`r año`/presupuesto-ingresos-`r año`.pdf)
+
+```{r ingresos}
+ingresos |>
+  filter(Año==año) |>
+  unite(Categoría, Capítulo, Artículo, Concepto, sep='-') |>
+  select(Categoría, Cantidad) |>
+  sunburst(legend=F, explanation = "function(d){return d.value.toLocaleString() + '€'}")
+```
+:::
+
+:::{.card title="Ingresos por Capítulos"}
+```{r ingresos-capitulos}
+plot.ingresos.capitulos(ingresos, año)
+```
+:::
+
+:::{.card title="Ingresos por Artículos"}
+```{r ingresos-articulos}
+plot.ingresos.articulos(ingresos, año)
+```
+:::
+
+:::{.card title="Ingresos por Conceptos"}
+```{r ingresos-conceptos}
+plot.ingresos.conceptos(ingresos, año)
+```
+:::
+
+:::{.card title="Variación Ingresos Conceptos"}
+
+```{r variacion-ingresos-conceptos}
+plot.variacion.ingresos.conceptos(ingresos, año)
+```
+:::
+
+:::{.card title="Inversiones"}
+#### Total inversiones: `r format(sum(inversiones[inversiones$Año == año, ]$Cantidad), decimal.mark=",", big.mark=".")` €. 
+
+[Presupuesto de inversiones de `r año`](doc/`r año`/presupuesto-inversiones-`r año`.pdf)
+
+```{r inversiones}
+plot.inversiones(inversiones, año)
+```
+:::

@@ -1,0 +1,11 @@
+--- 
+title: "Presupuestos municipales de Campo de Criptana"
+format: html
+lang: es
+---
+
+Bienvenido a la web del Foro Social con los presupuestos municipales de Campo de Criptana. Aquí podrás encontrar información sobre los presupuestos municipales de Campo de Criptana, desde el año 2010 en adelante.
+
+![](img/lupa-presupuestos.svg)
+
+Si detectas cualquier error en los datos, por favor, háznoslo saber a través del correo [forosocialcriptana@riseup.net](mailto:forosocialcriptana@riseup.net).
